@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOLIT — Эстетика превосходства (1.16.5 Fabric)</title>
-    <!-- Красивая иконка вкладки (Favicon) -->
+    <!-- Иконка вкладки (Favicon) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='2'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,16 +120,15 @@
     <!-- НАВИГАЦИЯ -->
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
-            <!-- Нормальная крутая иконка и логотип -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
                             <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="url(#logo-grad)" stroke="url(#logo-stroke)" stroke-width="1.5"/>
                             <defs>
                                 <linearGradient id="logo-grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--accent-1)" stop-opacity="0.8"/>
-                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.8"/>
+                                    <stop stop-color="var(--accent-1)" stop-opacity="0.9"/>
+                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.9"/>
                                 </linearGradient>
                                 <linearGradient id="logo-stroke" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
                                     <stop stop-color="#ffffff"/>
@@ -147,7 +146,6 @@
 
             <div class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-xl p-1">
                 <a href="#features" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Возможности</a>
-                <a href="#compare" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Сравнение</a>
                 <a href="#pricing" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Тарифы</a>
                 <a href="#faq" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">FAQ</a>
             </div>
@@ -222,11 +220,10 @@
                 </div>
             </div>
 
-            <!-- Правая часть: Стильная плавающая карточка возможностей вместо 3D -->
             <div class="lg:col-span-5">
                 <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/15 space-y-6">
                     <div class="flex items-center justify-between pb-4 border-b border-white/10">
-                        <span class="font-mono-code text-xs text-purple-300 uppercase tracking-widest">Архитектура v2.6</span>
+                        <span class="font-mono-code text-xs text-purple-300 uppercase tracking-widest">Клиентские модули</span>
                         <span class="w-2.5 h-2.5 rounded-full theme-bg"></span>
                     </div>
 
@@ -251,7 +248,7 @@
                             <div class="w-8 h-8 rounded-xl theme-bg flex items-center justify-center text-white font-bold text-xs shrink-0 mt-0.5">⚡</div>
                             <div>
                                 <h4 class="font-display text-sm font-bold text-white">Мгновенный свитч</h4>
-                                <p class="text-xs text-slate-400 mt-1">Идеальный тайминг свапа предметов и свапа щитов в бою.</p>
+                                <p class="text-xs text-slate-400 mt-1">Идеальный тайминг свапа предметов и щитов в бою.</p>
                             </div>
                         </div>
                     </div>
@@ -282,35 +279,6 @@
                 <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
             </div>
         </div>
-
-        <!-- СРАВНЕНИЕ ДО / ПОСЛЕ -->
-        <section id="compare" class="py-12">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ВИЗУАЛЬНЫЙ АПГРЕЙД</span>
-                <h2 class="font-display text-2xl sm:text-4xl font-bold mt-2">Преображение игрового мира</h2>
-                <p class="text-slate-400 text-sm mt-2">Потяните ползунок, чтобы увидеть разницу между стандартной графикой и атмосферой MONOLIT.</p>
-            </div>
-
-            <div class="glass-card rounded-3xl p-4 sm:p-6 max-w-4xl mx-auto">
-                <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[400px] select-none border border-white/10">
-                    <canvas id="compare-canvas" class="w-full h-full block"></canvas>
-                    <input type="range" id="compare-slider" min="5" max="95" value="50"
-                        class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                        oninput="updateCompareSlider(this.value)">
-                    <div id="compare-divider" class="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_15px_#fff] pointer-events-none z-10" style="left: 50%;">
-                        <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full theme-bg border-2 border-white flex items-center justify-center text-white font-bold text-xs shadow-xl">
-                            ↔
-                        </div>
-                    </div>
-                    <div class="absolute top-4 left-4 px-3 py-1.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/15 font-mono-code text-xs text-white pointer-events-none z-10">
-                        ✨ С MONOLIT ENGINE
-                    </div>
-                    <div class="absolute top-4 right-4 px-3 py-1.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/15 font-mono-code text-xs text-slate-400 pointer-events-none z-10">
-                        Обычный клиент
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- КАРТОЧКИ ВОЗМОЖНОСТЕЙ -->
         <section id="features" class="py-16">
@@ -618,76 +586,6 @@
             requestAnimationFrame(renderSpace);
         }
         renderSpace();
-
-        const cmpCanvas = document.getElementById('compare-canvas');
-        const cmpCtx = cmpCanvas.getContext('2d');
-        let splitPercent = 50;
-        let cmpTick = 0;
-
-        function resizeCompare() {
-            const rect = cmpCanvas.parentElement.getBoundingClientRect();
-            cmpCanvas.width = rect.width;
-            cmpCanvas.height = rect.height;
-        }
-        window.addEventListener('resize', resizeCompare);
-        setTimeout(resizeCompare, 60);
-
-        function updateCompareSlider(val) {
-            splitPercent = Number(val);
-            document.getElementById('compare-divider').style.left = `${splitPercent}%`;
-        }
-
-        function renderCompare() {
-            const w = cmpCanvas.width;
-            const h = cmpCanvas.height;
-            const splitX = (w * splitPercent) / 100;
-            cmpTick += 0.025;
-
-            cmpCtx.clearRect(0, 0, w, h);
-
-            cmpCtx.fillStyle = '#181920';
-            cmpCtx.fillRect(0, 0, w, h);
-
-            cmpCtx.fillStyle = '#23252f';
-            cmpCtx.fillRect(0, h * 0.62, w, h * 0.38);
-            cmpCtx.strokeStyle = '#2f3240';
-            for (let x = 0; x < w; x += 45) {
-                cmpCtx.strokeRect(x, h * 0.62, 45, h * 0.38);
-            }
-
-            cmpCtx.save();
-            cmpCtx.beginPath();
-            cmpCtx.rect(0, 0, splitX, h);
-            cmpCtx.clip();
-
-            const skyGrad = cmpCtx.createLinearGradient(0, 0, 0, h);
-            skyGrad.addColorStop(0, '#070514');
-            skyGrad.addColorStop(0.6, accent1 + '44');
-            skyGrad.addColorStop(1, '#05050a');
-            cmpCtx.fillStyle = skyGrad;
-            cmpCtx.fillRect(0, 0, w, h);
-
-            cmpCtx.strokeStyle = accent2 + '55';
-            cmpCtx.lineWidth = 1.5;
-            for (let x = 0; x < w; x += 45) {
-                cmpCtx.strokeRect(x, h * 0.62, 45, h * 0.38);
-            }
-
-            for (let i = 0; i < 18; i++) {
-                const px = ((i * 73 + cmpTick * 25) % w);
-                const py = h * 0.2 + Math.sin(cmpTick + i) * 65;
-                cmpCtx.fillStyle = i % 2 === 0 ? accent1 : accent2;
-                cmpCtx.shadowColor = accent2;
-                cmpCtx.shadowBlur = 12;
-                cmpCtx.beginPath();
-                cmpCtx.arc(px, py, 3.2, 0, Math.PI * 2);
-                cmpCtx.fill();
-            }
-
-            cmpCtx.restore();
-            requestAnimationFrame(renderCompare);
-        }
-        renderCompare();
 
         function toggleFaq(index) {
             const body = document.getElementById(`faq-body-${index}`);
