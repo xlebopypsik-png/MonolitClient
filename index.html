@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONOLIT — Визуальное совершенство (1.16.5 Fabric)</title>
+    <title>MONOLIT — Эстетика превосходства (1.16.5 Fabric)</title>
+    <!-- Красивая иконка вкладки (Favicon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='2'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +39,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Градиенты */
         .theme-text {
             background: linear-gradient(135deg, #ffffff 10%, var(--accent-1) 55%, var(--accent-2) 100%);
             -webkit-background-clip: text;
@@ -49,10 +50,9 @@
         }
 
         .theme-glow {
-            box-shadow: 0 0 45px -10px rgba(var(--accent-rgb), 0.55);
+            box-shadow: 0 0 45px -10px rgba(var(--accent-rgb), 0.5);
         }
 
-        /* 3D Стеклянные карточки */
         .glass-card {
             background: linear-gradient(165deg, rgba(18, 18, 32, 0.72) 0%, rgba(7, 7, 14, 0.88) 100%);
             backdrop-filter: blur(24px);
@@ -68,7 +68,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.16), transparent 45%);
+            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.15), transparent 45%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -79,21 +79,19 @@
         }
 
         .glass-card:hover {
-            border-color: rgba(var(--accent-rgb), 0.45);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 35px -10px rgba(var(--accent-rgb), 0.3);
+            border-color: rgba(var(--accent-rgb), 0.4);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 35px -10px rgba(var(--accent-rgb), 0.25);
         }
 
-        /* Аврора на фоне */
         @keyframes aurora-float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -25px) scale(1.1); }
+            50% { transform: translate(25px, -20px) scale(1.08); }
         }
 
         .aurora-blob {
             animation: aurora-float 9s ease-in-out infinite;
         }
 
-        /* Бегущая строка преимуществ */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -115,29 +113,41 @@
     <!-- Космический Холст -->
     <canvas id="space-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-    <!-- Неоновое свечение Авроры -->
-    <div class="fixed -top-48 left-1/4 w-[500px] h-[500px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-1); opacity: 0.2;"></div>
-    <div class="fixed top-1/2 -right-32 w-[460px] h-[460px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-2); opacity: 0.16; animation-delay: 3s;"></div>
+    <!-- Свечение Авроры -->
+    <div class="fixed -top-48 left-1/4 w-[500px] h-[500px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-1); opacity: 0.18;"></div>
+    <div class="fixed top-1/2 -right-32 w-[460px] h-[460px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-2); opacity: 0.14; animation-delay: 3s;"></div>
 
-    <!-- ВЕРХНЯЯ НАВИГАЦИЯ -->
+    <!-- НАВИГАЦИЯ -->
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
+            <!-- Нормальная крутая иконка и логотип -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <span class="font-display font-black text-base theme-text">M</span>
+                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="url(#logo-grad)" stroke="url(#logo-stroke)" stroke-width="1.5"/>
+                            <defs>
+                                <linearGradient id="logo-grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="var(--accent-1)" stop-opacity="0.8"/>
+                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.8"/>
+                                </linearGradient>
+                                <linearGradient id="logo-stroke" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#ffffff"/>
+                                    <stop offset="1" stop-color="var(--accent-2)"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
                 <div>
                     <span class="font-display font-extrabold tracking-wider text-sm sm:text-base text-white block leading-none">MONOLIT</span>
-                    <span class="font-mono-code text-[10px] text-slate-400 tracking-widest">NEXT-GEN 1.16.5</span>
+                    <span class="font-mono-code text-[10px] text-slate-400 tracking-widest">FABRIC 1.16.5</span>
                 </div>
             </a>
 
             <div class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-xl p-1">
-                <a href="#visualizer" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">3D Визуалы</a>
+                <a href="#features" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Возможности</a>
                 <a href="#compare" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Сравнение</a>
-                <a href="#features" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Преимущества</a>
                 <a href="#pricing" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Тарифы</a>
                 <a href="#faq" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">FAQ</a>
             </div>
@@ -148,9 +158,9 @@
         </nav>
     </header>
 
-    <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ ЭКРАНА -->
+    <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ -->
     <div class="fixed bottom-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
-        <div class="pointer-events-auto flex items-center gap-2 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/90 backdrop-blur-2xl border border-white/15 shadow-2xl">
+        <div class="pointer-events-auto flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/90 backdrop-blur-2xl border border-white/15 shadow-2xl">
             <span class="text-[11px] font-mono-code text-slate-400 hidden sm:inline">Палитра:</span>
             <button onclick="setTheme('#a855f7', '#38bdf8')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-sky-400 ring-2 ring-white/30 hover:scale-110 transition" title="Кибер Нова"></button>
             <button onclick="setTheme('#f43f5e', '#fb923c')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-orange-400 ring-1 ring-white/20 hover:scale-110 transition" title="Алый Закат"></button>
@@ -168,184 +178,169 @@
 
     <main class="relative z-10 pt-32 max-w-6xl mx-auto px-4 sm:px-6">
 
-        <!-- ГЛАВНЫЙ ЭКРАН + 3D СТУДИЯ ВИЗУАЛОВ ПЕРСОНАЖА -->
-        <section id="visualizer" class="grid lg:grid-cols-12 gap-8 items-center min-h-[75vh]">
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <section class="grid lg:grid-cols-12 gap-8 items-center min-h-[72vh]">
             
-            <!-- Левая часть -->
-            <div class="lg:col-span-6 space-y-6">
+            <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span class="font-mono-code text-[11px] uppercase tracking-wider text-slate-200">MONOLIT ENGINE 2026 • FABRIC 1.16.5</span>
+                    <span class="font-mono-code text-[11px] uppercase tracking-wider text-slate-200">MONOLIT CORE • FABRIC 1.16.5</span>
                 </div>
 
                 <h1 class="font-display text-4xl sm:text-5xl xl:text-6xl font-black leading-[1.06] tracking-tight">
-                    НОВЫЙ УРОВЕНЬ <br>
-                    <span class="theme-text">ВИЗУАЛЬНОЙ</span> <br>
-                    ЭСТЕТИКИ.
+                    ЭСТЕТИКА <br>
+                    <span class="theme-text">ПРЕВОСХОДСТВА</span> <br>
+                    И КОМФОРТА.
                 </h1>
 
                 <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
-                    Превратите каждую секунду игры в произведение искусства. Голографические эффекты, плавная физика частиц, умная кинематика и эталонная оптимизация свыше 540 FPS.
+                    Современный клиент для Minecraft 1.16.5 с упором на чистую визуальную эстетику, плавную кинематику движений и абсолютную безопасность конфиденциальности.
                 </p>
 
                 <div class="flex flex-wrap items-center gap-3.5 pt-2">
                     <a href="#pricing" class="px-7 py-4 rounded-2xl theme-bg font-display text-xs sm:text-sm font-bold text-white theme-glow hover:scale-[1.02] transition-transform">
-                        Получить доступ сейчас
+                        Получить доступ
                     </a>
-                    <a href="#compare" class="px-6 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs sm:text-sm font-semibold text-slate-200 transition">
-                        Сравнить До / После
+                    <a href="#features" class="px-6 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs sm:text-sm font-semibold text-slate-200 transition">
+                        Узнать больше
                     </a>
                 </div>
 
-                <!-- Плашки статистики -->
-                <div class="grid grid-cols-3 gap-3 pt-4">
-                    <div class="glass-card rounded-2xl p-3.5 text-center">
-                        <div class="font-display text-xl font-extrabold text-white">540+</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Стабильный FPS</div>
+                <div class="grid grid-cols-3 gap-3 pt-4 max-w-lg">
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="font-display text-lg font-extrabold text-white">100%</div>
+                        <div class="text-[11px] text-slate-400">Обходы проверок</div>
                     </div>
-                    <div class="glass-card rounded-2xl p-3.5 text-center">
-                        <div class="font-display text-xl font-extrabold theme-text">0.01 мс</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Отклик шейдеров</div>
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="font-display text-lg font-extrabold theme-text">0.01 мс</div>
+                        <div class="text-[11px] text-slate-400">Отклик ядра</div>
                     </div>
-                    <div class="glass-card rounded-2xl p-3.5 text-center">
-                        <div class="font-display text-xl font-extrabold text-white">24/7</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Облачная защита</div>
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="font-display text-lg font-extrabold text-white">24/7</div>
+                        <div class="text-[11px] text-slate-400">Поддержка</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Правая часть: 3D Голограмма Персонажа с переключаемыми эффектами -->
-            <div class="lg:col-span-6">
-                <div class="glass-card rounded-3xl p-5 border border-white/15">
-                    <div class="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                            <span class="font-mono-code text-xs text-slate-200 ml-1">3D КОНСТРУКТОР ЭФФЕКТОВ</span>
-                        </div>
-                        <span class="font-mono-code text-[11px] text-slate-400">Вращайте мышкой ↻</span>
+            <!-- Правая часть: Стильная плавающая карточка возможностей вместо 3D -->
+            <div class="lg:col-span-5">
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/15 space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                        <span class="font-mono-code text-xs text-purple-300 uppercase tracking-widest">Архитектура v2.6</span>
+                        <span class="w-2.5 h-2.5 rounded-full theme-bg"></span>
                     </div>
 
-                    <!-- Кнопки включения/выключения 3D-эффектов -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                        <button onclick="toggleVisual('chinahat')" id="vis-chinahat" class=" py-2 px-2.5 rounded-xl text-[11px] font-semibold theme-bg text-white transition">
-                            ✓ ChinaHat
-                        </button>
-                        <button onclick="toggleVisual('auraring')" id="vis-auraring" class="py-2 px-2.5 rounded-xl text-[11px] font-semibold theme-bg text-white transition">
-                            ✓ Aura Кольцо
-                        </button>
-                        <button onclick="toggleVisual('orbs')" id="vis-orbs" class="py-2 px-2.5 rounded-xl text-[11px] font-semibold theme-bg text-white transition">
-                            ✓ Сферы Душ
-                        </button>
-                        <button onclick="toggleVisual('wings')" id="vis-wings" class="py-2 px-2.5 rounded-xl text-[11px] font-semibold theme-bg text-white transition">
-                            ✓ Неон-Крылья
-                        </button>
-                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-8 h-8 rounded-xl theme-bg flex items-center justify-center text-white font-bold text-xs shrink-0 mt-0.5">✦</div>
+                            <div>
+                                <h4 class="font-display text-sm font-bold text-white">Плавная кинематика</h4>
+                                <p class="text-xs text-slate-400 mt-1">Интерполяция движений без резких рывков и детектов античитами.</p>
+                            </div>
+                        </div>
 
-                    <!-- Холст 3D-модели -->
-                    <div class="relative rounded-2xl overflow-hidden bg-[#05050c] border border-white/10 h-[360px] cursor-grab active:cursor-grabbing">
-                        <canvas id="avatar-canvas" class="w-full h-full block"></canvas>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none text-[11px] font-mono-code text-slate-300 bg-black/55 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">
-                            <span>Зажмите ЛКМ и двигайте мышь для 3D-осмотра</span>
-                            <span class="text-emerald-400">● OpenGL 3D</span>
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-8 h-8 rounded-xl theme-bg flex items-center justify-center text-white font-bold text-xs shrink-0 mt-0.5">🛡</div>
+                            <div>
+                                <h4 class="font-display text-sm font-bold text-white">Стелс-защита памяти</h4>
+                                <p class="text-xs text-slate-400 mt-1">Мгновенная самоочистка данных в один клик без следов в ОС.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-8 h-8 rounded-xl theme-bg flex items-center justify-center text-white font-bold text-xs shrink-0 mt-0.5">⚡</div>
+                            <div>
+                                <h4 class="font-display text-sm font-bold text-white">Мгновенный свитч</h4>
+                                <p class="text-xs text-slate-400 mt-1">Идеальный тайминг свапа предметов и свапа щитов в бою.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <a href="#pricing" class="block text-center py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white transition">
+                        Посмотреть все функции →
+                    </a>
                 </div>
             </div>
 
         </section>
 
-        <!-- БЕГУЩАЯ СТРОКА ТЕХНОЛОГИЙ -->
+        <!-- БЕГУЩАЯ СТРОКА -->
         <div class="my-16 py-4 border-y border-white/10 overflow-hidden bg-white/[0.01]">
             <div class="animate-marquee flex items-center gap-10 font-display text-xs uppercase tracking-widest text-slate-400">
-                <span>✦ ПЛАВНАЯ SPLINE-КИНЕМАТИКА</span>
+                <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
                 <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
-                <span>✦ ФИЗИКА ЧАСТИЦ С ОТСКОКОМ ОТ БЛОКОВ</span>
-                <span>✦ 540+ FPS БЕЗ ПРОСАДОК</span>
+                <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
                 <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ПОЛНАЯ СТЕЛС-ВЫГРУЗКА ИЗ ПАМЯТИ</span>
-                <!-- Дубль для бесшовности -->
-                <span>✦ ПЛАВНАЯ SPLINE-КИНЕМАТИКА</span>
+                <span>✦ ПОДДЕРЖКА FABRIC 1.16.5</span>
+                <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
+                <!-- Дубль -->
+                <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
                 <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
-                <span>✦ ФИЗИКА ЧАСТИЦ С ОТСКОКОМ ОТ БЛОКОВ</span>
-                <span>✦ 540+ FPS БЕЗ ПРОСАДОК</span>
+                <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
                 <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ПОЛНАЯ СТЕЛС-ВЫГРУЗКА ИЗ ПАМЯТИ</span>
+                <span>✦ ПОДДЕРЖКА FABRIC 1.16.5</span>
+                <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
             </div>
         </div>
 
-        <!-- ИНТЕРАКТИВНОЕ СРАВНЕНИЕ «ДО / ПОСЛЕ» -->
+        <!-- СРАВНЕНИЕ ДО / ПОСЛЕ -->
         <section id="compare" class="py-12">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">НАГЛЯДНАЯ РАЗНИЦА</span>
+                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ВИЗУАЛЬНЫЙ АПГРЕЙД</span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold mt-2">Преображение игрового мира</h2>
-                <p class="text-slate-400 text-sm mt-2">Потяните ползунок влево или вправо, чтобы сравнить стандартную графику и атмосферу с шейдерами MONOLIT.</p>
+                <p class="text-slate-400 text-sm mt-2">Потяните ползунок, чтобы увидеть разницу между стандартной графикой и атмосферой MONOLIT.</p>
             </div>
 
             <div class="glass-card rounded-3xl p-4 sm:p-6 max-w-4xl mx-auto">
                 <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[400px] select-none border border-white/10">
-                    <!-- Холст живого сравнения До/После -->
                     <canvas id="compare-canvas" class="w-full h-full block"></canvas>
-
-                    <!-- Ползунок поверх холста -->
                     <input type="range" id="compare-slider" min="5" max="95" value="50"
                         class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
                         oninput="updateCompareSlider(this.value)">
-
-                    <!-- Визуальная линия разделителя -->
                     <div id="compare-divider" class="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_15px_#fff] pointer-events-none z-10" style="left: 50%;">
                         <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full theme-bg border-2 border-white flex items-center justify-center text-white font-bold text-xs shadow-xl">
                             ↔
                         </div>
                     </div>
-
-                    <!-- Подписи -->
                     <div class="absolute top-4 left-4 px-3 py-1.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/15 font-mono-code text-xs text-white pointer-events-none z-10">
-                        ✨ С MONOLIT ENGINE (540 FPS)
+                        ✨ С MONOLIT ENGINE
                     </div>
                     <div class="absolute top-4 right-4 px-3 py-1.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/15 font-mono-code text-xs text-slate-400 pointer-events-none z-10">
-                        Обычный клиент (190 FPS)
+                        Обычный клиент
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- КАРТОЧКИ ПРЕИМУЩЕСТВ С 3D НАКЛОНОМ -->
+        <!-- КАРТОЧКИ ВОЗМОЖНОСТЕЙ -->
         <section id="features" class="py-16">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-sky-400">ПРЕВОСХОДСТВО В ДЕТАЛЯХ</span>
+                <span class="font-mono-code text-xs uppercase tracking-widest text-sky-400">ПРЕИМУЩЕСТВА</span>
                 <h2 class="font-display text-2xl sm:text-4xl font-bold mt-2">Создан для максимального комфорта</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">
-                        ✦
-                    </div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Атмосфера и Частицы</h3>
+                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">✦</div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Атмосфера и Шейдеры</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Кастомное ночное небо, неоновые следы прыжков, разлетающиеся 3D-кристаллы при ударах и плавное свечение окружения без нагрузки на видеокарту.
+                        Кастомное ночное небо, неоновые следы и плавное свечение окружения создают неповторимый визуальный стиль.
                     </p>
                 </div>
 
                 <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">
-                        ⚡
-                    </div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Математическая Точность</h3>
+                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">⚡</div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Интеллектуальная Кинематика</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Траектории рассчитываются по сглаженным сплайнам Безье с учетом пинга и вектора движения цели, обеспечивая безупречную стабильность на любом сервере.
+                        Алгоритмы расчета траекторий обеспечивают мягкое наведение без резких углов и микролагов.
                     </p>
                 </div>
 
                 <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">
-                        🛡
-                    </div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Абсолютная Невидимость</h3>
+                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">🛡</div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Полная Конфиденциальность</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Мгновенная самоочистка из оперативной памяти за доли секунды. Никаких следов в реестре, логах или системных процессах.
+                        Надежная защита сессии и мгновенная очистка дампов памяти при закрытии игры.
                     </p>
                 </div>
             </div>
@@ -367,16 +362,15 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- 30 дней -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-mono-code text-slate-400 uppercase">Старт</span>
                         <h3 class="font-display text-xl font-bold text-white mt-1">30 Дней</h3>
                         <div class="font-display text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ ко всем возможностям 1.16.5</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Все 3D-эффекты, шейдеры и кастомизация</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Автоматические обновления весь месяц</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ к версии 1.16.5</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Все визуальные шейдеры и эффекты</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Автоматические обновления</li>
                         </ul>
                     </div>
                     <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-display text-xs font-bold text-white transition">
@@ -384,7 +378,6 @@
                     </button>
                 </div>
 
-                <!-- 90 дней -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between border-purple-500/40 theme-glow relative">
                     <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono-code font-bold theme-bg text-white">
                         ПОПУЛЯРНЫЙ
@@ -395,8 +388,8 @@
                         <div class="font-display text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-200">
                             <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Все функции тарифа «Старт»</li>
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Доступ к закрытым бета-обновлениям</li>
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Бесплатный сброс привязки ПК</li>
+                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Доступ к бэтам и новым обходам</li>
+                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Сброс HWID в один клик</li>
                             <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Приоритетная поддержка 24/7</li>
                         </ul>
                     </div>
@@ -405,7 +398,6 @@
                     </button>
                 </div>
 
-                <!-- Навсегда -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-mono-code text-sky-400 uppercase">Максимум</span>
@@ -413,9 +405,9 @@
                         <div class="font-display text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
                             <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Пожизненная лицензия без доплат</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Эксклюзивные визуальные эффекты</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Мгновенный сброс привязки без ожидания</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> VIP-статус в закрытом сообществе</li>
+                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Эксклюзивные визуальные стили</li>
+                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Мгновенный сброс привязки</li>
+                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> VIP-роль в сообществе</li>
                         </ul>
                     </div>
                     <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-display text-xs font-bold text-white transition">
@@ -425,10 +417,10 @@
             </div>
         </section>
 
-        <!-- ЧАСТЫЕ ВОПРОСЫ (FAQ) -->
+        <!-- FAQ -->
         <section id="faq" class="py-12 max-w-3xl mx-auto">
             <div class="text-center mb-10">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ОТВЕТЫ НА ВОПРОСЫ</span>
+                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ПОМОЩЬ</span>
                 <h2 class="font-display text-2xl sm:text-3xl font-bold mt-2">Часто задаваемые вопросы</h2>
             </div>
 
@@ -439,27 +431,17 @@
                         <span id="faq-icon-0" class="text-purple-400 font-bold text-lg">+</span>
                     </div>
                     <p id="faq-body-0" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Доступ активируется автоматически в течение 5 секунд после подтверждения платежа. Вы сразу получаете ключ активации и инструкцию по установке за 1 минуту.
+                        Ключ активации и инструкция приходят автоматически в течение 5 секунд после подтверждения платежа.
                     </p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(1)">
                     <div class="flex items-center justify-between">
-                        <h4 class="font-display text-sm font-bold text-white">Сильно ли нагружается компьютер от 3D-эффектов и шейдеров?</h4>
+                        <h4 class="font-display text-sm font-bold text-white">Как установить клиент на версию 1.16.5?</h4>
                         <span id="faq-icon-1" class="text-purple-400 font-bold text-lg">+</span>
                     </div>
                     <p id="faq-body-1" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Нет! Наше рендер-ядро написано на чистом буфере OpenGL. Даже на встроенной графике и ноутбуках FPS остается высоким и стабильным.
-                    </p>
-                </div>
-
-                <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(2)">
-                    <div class="flex items-center justify-between">
-                        <h4 class="font-display text-sm font-bold text-white">Можно ли перенести подписку на другой компьютер?</h4>
-                        <span id="faq-icon-2" class="text-purple-400 font-bold text-lg">+</span>
-                    </div>
-                    <p id="faq-body-2" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Да, при смене комплектующих или покупке нового ПК вы можете сбросить привязку (HWID) в один клик.
+                        Клиент устанавливается через стандартный загрузчик Fabric для Minecraft 1.16.5 в один клик по нашей подробной инструкции.
                     </p>
                 </div>
             </div>
@@ -479,13 +461,13 @@
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО ПОКУПКИ -->
+    <!-- МОДАЛЬНОЕ ОКНО -->
     <div id="buy-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
             <div class="flex items-center justify-between mb-6">
                 <div>
                     <span class="font-mono-code text-[11px] text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
-                    <h3 id="modal-title" class="font-display text-xl font-bold text-white mt-0.5">Тариф «90 Дней»</h3>
+                    <h3 id="modal-title" class="font-display text-xl font-bold text-white mt-0.5">Тариф</h3>
                 </div>
                 <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
             </div>
@@ -493,11 +475,11 @@
             <div class="space-y-4">
                 <div>
                     <label class="text-xs text-slate-400 block mb-1.5">Ваш никнейм или E-mail</label>
-                    <input type="text" placeholder="Введите ваш никнейм" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" placeholder="Введите никнейм" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
                 </div>
 
                 <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Промокод (попробуйте <span class="text-purple-400 font-mono-code">MONOLIT20</span>)</label>
+                    <label class="text-xs text-slate-400 block mb-1.5">Промокод (пробуйте <span class="text-purple-400 font-mono-code">MONOLIT20</span>)</label>
                     <div class="flex gap-2">
                         <input type="text" id="promo-code" placeholder="MONOLIT20" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-sm text-white uppercase font-mono-code focus:outline-none">
                         <button onclick="checkPromo()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white">ОК</button>
@@ -507,7 +489,7 @@
 
                 <div class="p-4 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-between">
                     <span class="text-xs text-slate-400">Итого к оплате:</span>
-                    <span id="modal-price" class="font-display text-2xl font-bold text-white">790 ₽</span>
+                    <span id="modal-price" class="font-display text-2xl font-bold text-white">0 ₽</span>
                 </div>
 
                 <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-display text-xs font-bold text-white theme-glow hover:opacity-95 transition">
@@ -518,9 +500,6 @@
     </div>
 
     <script>
-        /* ==========================================
-           1. ТЕМА И НАКЛОН 3D-КАРТОЧЕК
-           ========================================== */
         let accent1 = '#a855f7';
         let accent2 = '#38bdf8';
 
@@ -539,7 +518,6 @@
             r.style.setProperty('--accent2-rgb', hexToRgb(c2));
         }
 
-        // Подсветка и легкий 3D Tilt на карточках
         document.querySelectorAll('.glass-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
@@ -549,9 +527,9 @@
                 card.style.setProperty('--my', `${y}px`);
 
                 if (card.classList.contains('tilt-card')) {
-                    const rx = ((y / rect.height) - 0.5) * -7;
-                    const ry = ((x / rect.width) - 0.5) * 7;
-                    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+                    const rx = ((y / rect.height) - 0.5) * -6;
+                    const ry = ((x / rect.width) - 0.5) * 6;
+                    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
                 }
             });
             card.addEventListener('mouseleave', () => {
@@ -561,9 +539,6 @@
             });
         });
 
-        /* ==========================================
-           2. КОСМИЧЕСКИЙ ФОН (ЗВЕЗДЫ / КОМЕТЫ / ВАРП)
-           ========================================== */
         const spaceCanvas = document.getElementById('space-canvas');
         const spaceCtx = spaceCanvas.getContext('2d');
         let spaceModes = ['stars', 'comets', 'warp'];
@@ -644,193 +619,6 @@
         }
         renderSpace();
 
-        /* ==========================================
-           3. 3D КОНСТРУКТОР ВИЗУАЛОВ ПЕРСОНАЖА
-           ========================================== */
-        const avCanvas = document.getElementById('avatar-canvas');
-        const avCtx = avCanvas.getContext('2d');
-        let visuals = { chinahat: true, auraring: true, orbs: true, wings: true };
-        let yaw = 0.5;
-        let isDragging = false;
-        let prevX = 0;
-        let timeTick = 0;
-
-        function resizeAvatar() {
-            const rect = avCanvas.parentElement.getBoundingClientRect();
-            avCanvas.width = rect.width;
-            avCanvas.height = rect.height;
-        }
-        window.addEventListener('resize', resizeAvatar);
-        setTimeout(resizeAvatar, 50);
-
-        avCanvas.addEventListener('mousedown', e => { isDragging = true; prevX = e.clientX; });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('mousemove', e => {
-            if (isDragging) {
-                yaw += (e.clientX - prevX) * 0.012;
-                prevX = e.clientX;
-            }
-        });
-
-        function toggleVisual(key) {
-            visuals[key] = !visuals[key];
-            const btn = document.getElementById(`vis-${key}`);
-            const names = { chinahat: 'ChinaHat', auraring: 'Aura Кольцо', orbs: 'Сферы Душ', wings: 'Неон-Крылья' };
-            if (visuals[key]) {
-                btn.className = 'py-2 px-2.5 rounded-xl text-[11px] font-semibold theme-bg text-white transition';
-                btn.textContent = `✓ ${names[key]}`;
-            } else {
-                btn.className = 'py-2 px-2.5 rounded-xl text-[11px] font-semibold bg-white/5 text-slate-400 border border-white/10 transition';
-                btn.textContent = `✕ ${names[key]}`;
-            }
-        }
-
-        function project3D(x, y, z, cx, cy) {
-            const cos = Math.cos(yaw);
-            const sin = Math.sin(yaw);
-            const rx = x * cos - z * sin;
-            const rz = x * sin + z * cos;
-            const scale = 280 / (280 + rz);
-            return { x: cx + rx * scale, y: cy + y * scale, scale };
-        }
-
-        function renderAvatar() {
-            avCtx.clearRect(0, 0, avCanvas.width, avCanvas.height);
-            const cx = avCanvas.width / 2;
-            const cy = avCanvas.height / 2 + 15;
-            timeTick += 0.035;
-            if (!isDragging) yaw += 0.008;
-
-            const bob = Math.sin(timeTick * 1.5) * 6;
-
-            // 1. Aura Кольцо на земле и волна вокруг игрока
-            if (visuals.auraring) {
-                for (let ring = 0; ring < 2; ring++) {
-                    const rad = ring === 0 ? 75 : 52 + Math.sin(timeTick * 2) * 12;
-                    const yLevel = ring === 0 ? 95 : Math.sin(timeTick * 1.8) * 65;
-                    avCtx.save();
-                    avCtx.beginPath();
-                    for (let i = 0; i <= 40; i++) {
-                        const a = (Math.PI * 2 * i) / 40;
-                        const p = project3D(Math.cos(a) * rad, yLevel, Math.sin(a) * rad, cx, cy);
-                        if (i === 0) avCtx.moveTo(p.x, p.y);
-                        else avCtx.lineTo(p.x, p.y);
-                    }
-                    avCtx.strokeStyle = ring === 0 ? accent1 : accent2;
-                    avCtx.lineWidth = 2.5;
-                    avCtx.shadowColor = accent1;
-                    avCtx.shadowBlur = 15;
-                    avCtx.stroke();
-                    avCtx.restore();
-                }
-            }
-
-            // 2. Неон-Крылья за спиной
-            if (visuals.wings) {
-                avCtx.save();
-                [-1, 1].forEach(side => {
-                    const flap = Math.sin(timeTick * 3) * 12 * side;
-                    const p1 = project3D(side * 12, -15 + bob, -15, cx, cy);
-                    const p2 = project3D(side * 75, -55 + bob, -35 + flap, cx, cy);
-                    const p3 = project3D(side * 55, 20 + bob, -30 + flap, cx, cy);
-
-                    avCtx.strokeStyle = accent2;
-                    avCtx.fillStyle = accent1 + '33';
-                    avCtx.lineWidth = 2;
-                    avCtx.shadowColor = accent2;
-                    avCtx.shadowBlur = 12;
-                    avCtx.beginPath();
-                    avCtx.moveTo(p1.x, p1.y);
-                    avCtx.lineTo(p2.x, p2.y);
-                    avCtx.lineTo(p3.x, p3.y);
-                    avCtx.closePath();
-                    avCtx.fill();
-                    avCtx.stroke();
-                });
-                avCtx.restore();
-            }
-
-            // 3. Голографический силуэт персонажа (Голова + Торс)
-            avCtx.save();
-            const headPos = project3D(0, -58 + bob, 0, cx, cy);
-            const bodyPos = project3D(0, 5 + bob, 0, cx, cy);
-
-            avCtx.strokeStyle = '#ffffff';
-            avCtx.fillStyle = accent1 + '28';
-            avCtx.lineWidth = 1.8;
-            avCtx.shadowColor = accent1;
-            avCtx.shadowBlur = 14;
-
-            // Голова
-            avCtx.fillRect(headPos.x - 22, headPos.y - 22, 44, 44);
-            avCtx.strokeRect(headPos.x - 22, headPos.y - 22, 44, 44);
-
-            // Торс
-            avCtx.fillRect(bodyPos.x - 24, bodyPos.y - 34, 48, 72);
-            avCtx.strokeRect(bodyPos.x - 24, bodyPos.y - 34, 48, 72);
-            avCtx.restore();
-
-            // 4. Неоновая шляпа ChinaHat
-            if (visuals.chinahat) {
-                avCtx.save();
-                const tip = project3D(0, -102 + bob, 0, cx, cy);
-                const segments = 28;
-                const hatRadius = 52;
-
-                avCtx.beginPath();
-                for (let i = 0; i <= segments; i++) {
-                    const a = (Math.PI * 2 * i) / segments;
-                    const rim = project3D(Math.cos(a) * hatRadius, -76 + bob, Math.sin(a) * hatRadius, cx, cy);
-                    avCtx.moveTo(tip.x, tip.y);
-                    avCtx.lineTo(rim.x, rim.y);
-                }
-                avCtx.strokeStyle = accent1 + '66';
-                avCtx.lineWidth = 1.2;
-                avCtx.stroke();
-
-                // Светящийся ободок шляпы
-                avCtx.beginPath();
-                for (let i = 0; i <= segments; i++) {
-                    const a = (Math.PI * 2 * i) / segments;
-                    const rim = project3D(Math.cos(a) * hatRadius, -76 + bob, Math.sin(a) * hatRadius, cx, cy);
-                    if (i === 0) avCtx.moveTo(rim.x, rim.y);
-                    else avCtx.lineTo(rim.x, rim.y);
-                }
-                avCtx.strokeStyle = accent2;
-                avCtx.lineWidth = 2.5;
-                avCtx.shadowColor = accent2;
-                avCtx.shadowBlur = 15;
-                avCtx.stroke();
-                avCtx.restore();
-            }
-
-            // 5. Летающие Сферы Душ (Soul Orbs)
-            if (visuals.orbs) {
-                for (let i = 0; i < 4; i++) {
-                    const a = timeTick * 1.6 + (Math.PI * 2 * i) / 4;
-                    const ox = Math.cos(a) * 68;
-                    const oz = Math.sin(a) * 68;
-                    const oy = Math.sin(timeTick * 2 + i) * 35;
-                    const p = project3D(ox, oy, oz, cx, cy);
-
-                    avCtx.save();
-                    avCtx.fillStyle = i % 2 === 0 ? accent1 : accent2;
-                    avCtx.shadowColor = accent2;
-                    avCtx.shadowBlur = 16;
-                    avCtx.beginPath();
-                    avCtx.arc(p.x, p.y, 6 * p.scale, 0, Math.PI * 2);
-                    avCtx.fill();
-                    avCtx.restore();
-                }
-            }
-
-            requestAnimationFrame(renderAvatar);
-        }
-        renderAvatar();
-
-        /* ==========================================
-           4. ЖИВОЕ СРАВНЕНИЕ ДО / ПОСЛЕ
-           ========================================== */
         const cmpCanvas = document.getElementById('compare-canvas');
         const cmpCtx = cmpCanvas.getContext('2d');
         let splitPercent = 50;
@@ -857,11 +645,9 @@
 
             cmpCtx.clearRect(0, 0, w, h);
 
-            // ПРАВАЯ СТОРОНА (Обычный скучный клиент)
             cmpCtx.fillStyle = '#181920';
             cmpCtx.fillRect(0, 0, w, h);
 
-            // Серый горизонт и блоки
             cmpCtx.fillStyle = '#23252f';
             cmpCtx.fillRect(0, h * 0.62, w, h * 0.38);
             cmpCtx.strokeStyle = '#2f3240';
@@ -869,13 +655,11 @@
                 cmpCtx.strokeRect(x, h * 0.62, 45, h * 0.38);
             }
 
-            // ЛЕВАЯ СТОРОНА (С шейдерами MONOLIT)
             cmpCtx.save();
             cmpCtx.beginPath();
             cmpCtx.rect(0, 0, splitX, h);
             cmpCtx.clip();
 
-            // Космическое градиентное небо Monolit
             const skyGrad = cmpCtx.createLinearGradient(0, 0, 0, h);
             skyGrad.addColorStop(0, '#070514');
             skyGrad.addColorStop(0.6, accent1 + '44');
@@ -883,14 +667,12 @@
             cmpCtx.fillStyle = skyGrad;
             cmpCtx.fillRect(0, 0, w, h);
 
-            // Неоновая сетка земли в стиле Monolit
             cmpCtx.strokeStyle = accent2 + '55';
             cmpCtx.lineWidth = 1.5;
             for (let x = 0; x < w; x += 45) {
                 cmpCtx.strokeRect(x, h * 0.62, 45, h * 0.38);
             }
 
-            // Парящие светящиеся частицы и кольца
             for (let i = 0; i < 18; i++) {
                 const px = ((i * 73 + cmpTick * 25) % w);
                 const py = h * 0.2 + Math.sin(cmpTick + i) * 65;
@@ -902,30 +684,11 @@
                 cmpCtx.fill();
             }
 
-            // Светящийся кристалл в центре сцены
-            const cx = w * 0.35;
-            const cy = h * 0.45 + Math.sin(cmpTick * 2) * 8;
-            cmpCtx.strokeStyle = '#ffffff';
-            cmpCtx.fillStyle = accent1;
-            cmpCtx.shadowColor = accent1;
-            cmpCtx.shadowBlur = 25;
-            cmpCtx.beginPath();
-            cmpCtx.moveTo(cx, cy - 35);
-            cmpCtx.lineTo(cx + 28, cy);
-            cmpCtx.lineTo(cx, cy + 35);
-            cmpCtx.lineTo(cx - 28, cy);
-            cmpCtx.closePath();
-            cmpCtx.fill();
-            cmpCtx.stroke();
-
             cmpCtx.restore();
             requestAnimationFrame(renderCompare);
         }
         renderCompare();
 
-        /* ==========================================
-           5. FAQ, ВАЛЮТЫ И ОПЛАТА
-           ========================================== */
         function toggleFaq(index) {
             const body = document.getElementById(`faq-body-${index}`);
             const icon = document.getElementById(`faq-icon-${index}`);
@@ -990,7 +753,7 @@
                 msg.className = 'text-[11px] mt-1.5 text-emerald-400';
             } else {
                 discount = 1;
-                msg.textContent = '✕ Неверный промокод (попробуйте MONOLIT20)';
+                msg.textContent = '✕ Неверный промокод (пробуйте MONOLIT20)';
                 msg.className = 'text-[11px] mt-1.5 text-rose-400';
             }
             document.getElementById('modal-price').textContent = formatPrice(currentRub);
