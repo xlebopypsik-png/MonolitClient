@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOLIT — Эстетика превосходства (26.2)</title>
     <!-- Иконка вкладки (Favicon) с буквой M -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='%2306060c' stroke='%23a855f7' stroke-width='1.5'/><text x='50% ' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='900' font-size='14'>M</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='1.5'/><path d='M12 2L12 22' stroke='%23ffffff' stroke-width='0.75' opacity='0.6'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,7 +114,6 @@
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Логотип с буквой M -->
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
                         <span class="font-black text-base text-white theme-text">M</span>
@@ -132,9 +131,14 @@
                 <a href="#faq" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">FAQ</a>
             </div>
 
-            <a href="#pricing" class="px-5 py-2.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                Купить доступ
-            </a>
+            <div class="flex items-center gap-3">
+                <button onclick="openAuthModal()" id="auth-nav-btn" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white transition">
+                    Войти
+                </button>
+                <a href="#pricing" class="px-5 py-2 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition hidden sm:inline-block">
+                    Купить доступ
+                </a>
+            </div>
         </nav>
     </header>
 
@@ -251,7 +255,7 @@
             </div>
         </section>
 
-        <!-- ТАРИФЫ (ВСЕ С ПОДСВЕТКОЙ) -->
+        <!-- ТАРИФЫ -->
         <section id="pricing" class="py-16 text-left">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div>
@@ -267,7 +271,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Тариф 1 с подсветкой -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
                     <div>
                         <span class="text-xs font-semibold text-slate-400 uppercase">Старт</span>
@@ -284,7 +287,6 @@
                     </button>
                 </div>
 
-                <!-- Тариф 2 с подсветкой -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between border-purple-500/40 theme-glow relative">
                     <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold theme-bg text-white">
                         ПОПУЛЯРНЫЙ
@@ -305,7 +307,6 @@
                     </button>
                 </div>
 
-                <!-- Тариф 3 с подсветкой -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
                     <div>
                         <span class="text-xs font-semibold text-sky-400 uppercase">Максимум</span>
@@ -369,7 +370,7 @@
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО -->
+    <!-- МОДАЛЬНОЕ ОКНО ОПЛАТЫ -->
     <div id="buy-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
             <div class="flex items-center justify-between mb-6">
@@ -403,6 +404,41 @@
                 <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                     Оплатить (СБП / Карта / Crypto)
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ / ВХОДА -->
+    <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <span class="text-[11px] font-semibold text-purple-400 uppercase" id="auth-subtitle">ЛИЧНЫЙ КАБИНЕТ</span>
+                    <h3 id="auth-title" class="text-xl font-bold text-white mt-0.5">Вход в систему</h3>
+                </div>
+                <button onclick="closeAuthModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
+            </div>
+
+            <div class="space-y-4" id="auth-form-container">
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1.5">Никнейм</label>
+                    <input type="text" id="auth-username" placeholder="Ваш ник" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1.5">Пароль</label>
+                    <input type="password" id="auth-password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
+                </div>
+
+                <button onclick="handleAuthSubmit()" id="auth-submit-btn" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
+                    Войти в аккаунт
+                </button>
+
+                <div class="text-center pt-2">
+                    <button onclick="toggleAuthMode()" id="auth-toggle-btn" class="text-xs text-slate-400 hover:text-white transition">
+                        Нет аккаунта? <span class="text-purple-400 font-semibold">Зарегистрироваться</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -600,6 +636,135 @@
         function finishOrder() {
             alert('Заказ создан! Перенаправление на страницу оплаты...');
             closeModal();
+        }
+
+        // --- ЛОГИКА АВТОРИЗАЦИИ И ЛИЧНОГО КАБИНЕТА ---
+        let isRegisterMode = false;
+        let currentUser = localStorage.getItem('monolit_user') ? JSON.parse(localStorage.getItem('monolit_user')) : null;
+
+        function updateAuthUI() {
+            const btn = document.getElementById('auth-nav-btn');
+            if (currentUser) {
+                btn.textContent = currentUser.username;
+                btn.classList.add('theme-bg');
+                btn.classList.remove('bg-white/10');
+            } else {
+                btn.textContent = 'Войти';
+                btn.classList.remove('theme-bg');
+                btn.classList.add('bg-white/10');
+            }
+        }
+        updateAuthUI();
+
+        function openAuthModal() {
+            if (currentUser) {
+                // Если уже вошел — показываем кабинет
+                showProfileModal();
+                return;
+            }
+            isRegisterMode = false;
+            renderAuthForm();
+            const m = document.getElementById('auth-modal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeAuthModal() {
+            const m = document.getElementById('auth-modal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function toggleAuthMode() {
+            isRegisterMode = !isRegisterMode;
+            renderAuthForm();
+        }
+
+        function renderAuthForm() {
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const submitBtn = document.getElementById('auth-submit-btn');
+            const toggleBtn = document.getElementById('auth-toggle-btn');
+
+            if (isRegisterMode) {
+                subtitle.textContent = 'РЕГИСТРАЦИЯ АККАУНТА';
+                title.textContent = 'Создать профиль';
+                submitBtn.textContent = 'Зарегистрироваться';
+                toggleBtn.innerHTML = 'Уже есть аккаунт? <span class="text-purple-400 font-semibold">Войти</span>';
+            } else {
+                subtitle.textContent = 'ЛИЧНЫЙ КАБИНЕТ';
+                title.textContent = 'Вход в систему';
+                submitBtn.textContent = 'Войти в аккаунт';
+                toggleBtn.innerHTML = 'Нет аккаунта? <span class="text-purple-400 font-semibold">Зарегистрироваться</span>';
+            }
+        }
+
+        function handleAuthSubmit() {
+            const username = document.getElementById('auth-username').value.trim();
+            const pass = document.getElementById('auth-password').value.trim();
+
+            if (!username || !pass) {
+                alert('Пожалуйста, заполните все поля!');
+                return;
+            }
+
+            // Имитация ответа сервера
+            currentUser = {
+                username: username,
+                sub: 'Активна (Version 26.2)',
+                hwid: 'Не привязан'
+            };
+            localStorage.setItem('monolit_user', JSON.stringify(currentUser));
+            updateAuthUI();
+            closeAuthModal();
+            alert(isRegisterMode ? 'Регистрация успешна!'  : 'Успешный вход!');
+        }
+
+        function showProfileModal() {
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const container = document.getElementById('auth-form-container');
+
+            subtitle.textContent = 'ЛИЧНЫЙ КАБИНЕТ';
+            title.textContent = `Привет, ${currentUser.username}!`;
+
+            container.innerHTML = `
+                <div class="p-4 rounded-2xl bg-black/50 border border-white/10 space-y-3 text-left">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-400">Статус подписки:</span>
+                        <span class="text-emerald-400 font-bold">${currentUser.sub}</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-400">Привязка HWID:</span>
+                        <span class="text-purple-400 font-mono-code">${currentUser.hwid}</span>
+                    </div>
+                </div>
+                <button onclick="resetHwid()" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white transition">
+                    Сбросить HWID
+                </button>
+                <button onclick="logoutUser()" class="w-full py-3 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 text-xs font-semibold text-rose-300 transition">
+                    Выйти из аккаунта
+                </button>
+            `;
+
+            const m = document.getElementById('auth-modal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function resetHwid() {
+            currentUser.hwid = 'Сброшен (ждет лаунчер)';
+            localStorage.setItem('monolit_user', JSON.stringify(currentUser));
+            alert('HWID успешно сброшен!');
+            closeAuthModal();
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('monolit_user');
+            currentUser = null;
+            updateAuthUI();
+            closeAuthModal();
+            location.reload();
         }
     </script>
 </body>
