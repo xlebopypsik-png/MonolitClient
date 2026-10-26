@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOLIT — Эстетика превосходства (26.2)</title>
-    <!-- Иконка вкладки (Favicon) с буквой M -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='%2306060c' stroke='%23a855f7' stroke-width='1.5'/><text x='50% ' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='900' font-size='14'>M</text></svg>">
+    <!-- Иконка вкладки (Favicon) с кристаллом -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='1.5'/><path d='M12 2L12 22' stroke='%23ffffff' stroke-width='0.75' opacity='0.6'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,7 +115,20 @@
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <span class="font-extrabold text-base text-white theme-text">M</span>
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="url(#logo-grad)" stroke="url(#logo-stroke)" stroke-width="1.5"/>
+                            <path d="M12 2L12 22" stroke="#ffffff" stroke-width="0.75" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="logo-grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="var(--accent-1)" stop-opacity="0.9"/>
+                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.9"/>
+                                </linearGradient>
+                                <linearGradient id="logo-stroke" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#ffffff"/>
+                                    <stop offset="1" stop-color="var(--accent-2)"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
                 <div>
@@ -271,9 +284,9 @@
                         <h3 class="text-xl font-bold text-white mt-1">30 Дней</h3>
                         <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ к версии 26.2</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Все визуальные шейдеры и эффекты</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Автоматические обновления</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Полный доступ к версии 26.2</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Все визуальные шейдеры и эффекты</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Автоматические обновления</li>
                         </ul>
                     </div>
                     <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
@@ -290,10 +303,10 @@
                         <h3 class="text-xl font-bold text-white mt-1">90 Дней</h3>
                         <div class="text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-200">
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Все функции тарифа «Старт»</li>
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Доступ к бэтам и новым обновлениям</li>
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Сброс HWID в один клик</li>
-                            <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Приоритетная поддержка 24/7</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Все функции тарифа «Старт»</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Доступ к бэтам и новым обновлениям</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Сброс HWID в один клик</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Приоритетная поддержка 24/7</li>
                         </ul>
                     </div>
                     <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white shadow-xl hover:opacity-95 transition">
@@ -307,10 +320,10 @@
                         <h3 class="text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
                         <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Пожизненная лицензия без доплат</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Эксклюзивные визуальные стили</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Мгновенный сброс привязки</li>
-                            <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> VIP-роль в сообществе</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Пожизненная лицензия без доплат</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Эксклюзивные визуальные стили</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Мгновенный сброс привязки</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> VIP-роль в сообществе</li>
                         </ul>
                     </div>
                     <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
