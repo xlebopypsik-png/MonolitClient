@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOLIT — Эстетика превосходства (1.16.5 Fabric)</title>
-    <!-- Иконка вкладки (Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='2'/></svg>">
+    <!-- Иконка вкладки (Favicon) с буквой M -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='%2306060c' stroke='%23a855f7' stroke-width='1.5'/><text x='50% ' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='900' font-size='14'>M</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent-1: #a855f7;
@@ -31,11 +31,6 @@
             overflow-x: hidden;
         }
 
-        .font-display {
-            font-family: 'Unbounded', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
         .font-mono-code {
             font-family: 'JetBrains Mono', monospace;
         }
@@ -51,11 +46,11 @@
         }
 
         .theme-glow {
-            box-shadow: 0 0 50px -10px rgba(var(--accent-rgb), 0.55);
+            box-shadow: 0 0 45px -10px rgba(var(--accent-rgb), 0.5);
         }
 
         .glass-card {
-            background: linear-gradient(165deg, rgba(18, 18, 32, 0.75) 0%, rgba(7, 7, 14, 0.9) 100%);
+            background: linear-gradient(165deg, rgba(18, 18, 32, 0.72) 0%, rgba(7, 7, 14, 0.88) 100%);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -69,7 +64,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.16), transparent 45%);
+            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.15), transparent 45%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -80,8 +75,8 @@
         }
 
         .glass-card:hover {
-            border-color: rgba(var(--accent-rgb), 0.45);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 35px -10px rgba(var(--accent-rgb), 0.3);
+            border-color: rgba(var(--accent-rgb), 0.4);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 35px -10px rgba(var(--accent-rgb), 0.25);
         }
 
         @keyframes aurora-float {
@@ -122,26 +117,14 @@
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Новый стильный логотип с неоновым кристаллом -->
+                <!-- Новый простой и красивый логотип с буквой M -->
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="url(#logo-grad)" stroke="url(#logo-stroke)" stroke-width="1.5"/>
-                            <defs>
-                                <linearGradient id="logo-grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--accent-1)" stop-opacity="0.9"/>
-                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.9"/>
-                                </linearGradient>
-                                <linearGradient id="logo-stroke" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#ffffff"/>
-                                    <stop offset="1" stop-color="var(--accent-2)"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                        <span class="font-extrabold text-base text-white theme-text">M</span>
                     </div>
                 </div>
                 <div>
-                    <span class="font-display font-black tracking-wider text-sm sm:text-base text-white block leading-none">MONOLIT</span>
+                    <span class="font-black tracking-wider text-sm sm:text-base text-white block leading-none">MONOLIT</span>
                     <span class="font-mono-code text-[10px] text-slate-400 tracking-widest">FABRIC 1.16.5</span>
                 </div>
             </a>
@@ -152,7 +135,7 @@
                 <a href="#faq" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">FAQ</a>
             </div>
 
-            <a href="#pricing" class="px-5 py-2.5 rounded-xl theme-bg font-display text-xs font-bold text-white theme-glow hover:opacity-95 transition">
+            <a href="#pricing" class="px-5 py-2.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                 Купить доступ
             </a>
         </nav>
@@ -185,7 +168,7 @@
                 <span class="font-mono-code text-[11px] uppercase tracking-wider text-slate-200">MONOLIT CORE • FABRIC 1.16.5</span>
             </div>
 
-            <h1 class="font-display text-4xl sm:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl">
+            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl">
                 ЭСТЕТИКА <span class="theme-text">ПРЕВОСХОДСТВА</span> И КОМФОРТА.
             </h1>
 
@@ -194,7 +177,7 @@
             </p>
 
             <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <a href="#pricing" class="px-8 py-4 rounded-2xl theme-bg font-display text-xs sm:text-sm font-bold text-white theme-glow hover:scale-[1.02] transition-transform">
+                <a href="#pricing" class="px-8 py-4 rounded-2xl theme-bg font-bold text-xs sm:text-sm text-white theme-glow hover:scale-[1.02] transition-transform">
                     Получить доступ
                 </a>
                 <a href="#features" class="px-8 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs sm:text-sm font-semibold text-slate-200 transition">
@@ -204,15 +187,15 @@
 
             <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg w-full mx-auto">
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="font-display text-lg font-black text-white">Fabric 1.16.5</div>
+                    <div class="text-lg font-black text-white">Fabric 1.16.5</div>
                     <div class="text-[11px] text-slate-400 mt-1">Платформа</div>
                 </div>
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="font-display text-lg font-black theme-text">OpenGL</div>
+                    <div class="text-lg font-black theme-text">OpenGL</div>
                     <div class="text-[11px] text-slate-400 mt-1">Оптимизация</div>
                 </div>
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="font-display text-lg font-black text-white">24/7</div>
+                    <div class="text-lg font-black text-white">24/7</div>
                     <div class="text-[11px] text-slate-400 mt-1">Поддержка</div>
                 </div>
             </div>
@@ -220,7 +203,7 @@
 
         <!-- БЕГУЩАЯ СТРОКА -->
         <div class="my-20 py-4 border-y border-white/10 overflow-hidden bg-white/[0.01]">
-            <div class="animate-marquee flex items-center gap-10 font-display text-xs uppercase tracking-widest text-slate-400">
+            <div class="animate-marquee flex items-center gap-10 font-bold text-xs uppercase tracking-widest text-slate-400">
                 <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
                 <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
                 <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
@@ -241,13 +224,13 @@
         <section id="features" class="py-16 text-left">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="font-mono-code text-xs uppercase tracking-widest text-sky-400">ПРЕИМУЩЕСТВА</span>
-                <h2 class="font-display text-2xl sm:text-4xl font-black mt-2">Создан для максимального комфорта</h2>
+                <h2 class="text-2xl sm:text-4xl font-black mt-2">Создан для максимального комфорта</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card tilt-card rounded-3xl p-7">
                     <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">✦</div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Атмосфера и Шейдеры</h3>
+                    <h3 class="text-lg font-bold text-white mb-2.5">Атмосфера и Шейдеры</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Кастомное ночное небо, неоновые следы и плавное свечение окружения создают неповторимый визуальный стиль.
                     </p>
@@ -255,7 +238,7 @@
 
                 <div class="glass-card tilt-card rounded-3xl p-7">
                     <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">⚡</div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Интеллектуальная Кинематика</h3>
+                    <h3 class="text-lg font-bold text-white mb-2.5">Интеллектуальная Кинематика</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Алгоритмы расчета траекторий обеспечивают мягкое наведение без резких углов и микролагов.
                     </p>
@@ -263,7 +246,7 @@
 
                 <div class="glass-card tilt-card rounded-3xl p-7">
                     <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">🛡</div>
-                    <h3 class="font-display text-lg font-bold text-white mb-2.5">Полная Конфиденциальность</h3>
+                    <h3 class="text-lg font-bold text-white mb-2.5">Полная Конфиденциальность</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Надежная защита сессии и мгновенная очистка дампов памяти при закрытии игры.
                     </p>
@@ -276,7 +259,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div>
                     <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ЛИЦЕНЗИЯ</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-black mt-2">Тарифные планы</h2>
+                    <h2 class="text-2xl sm:text-4xl font-black mt-2">Тарифные планы</h2>
                 </div>
 
                 <div class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1 self-start">
@@ -290,15 +273,15 @@
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-mono-code text-slate-400 uppercase">Старт</span>
-                        <h3 class="font-display text-xl font-bold text-white mt-1">30 Дней</h3>
-                        <div class="font-display text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
+                        <h3 class="text-xl font-bold text-white mt-1">30 Дней</h3>
+                        <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ к версии 1.16.5</li>
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Все визуальные шейдеры и эффекты</li>
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Автоматические обновления</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-display text-xs font-bold text-white transition">
+                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
                         Выбрать тариф
                     </button>
                 </div>
@@ -309,8 +292,8 @@
                     </div>
                     <div>
                         <span class="text-xs font-mono-code text-purple-300 uppercase">Оптимальный</span>
-                        <h3 class="font-display text-xl font-bold text-white mt-1">90 Дней</h3>
-                        <div class="font-display text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
+                        <h3 class="text-xl font-bold text-white mt-1">90 Дней</h3>
+                        <div class="text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-200">
                             <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Все функции тарифа «Старт»</li>
                             <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Доступ к бэтам и новым обновлениям</li>
@@ -318,7 +301,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-purple-400">✓</span> Приоритетная поддержка 24/7</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-display text-xs font-bold text-white shadow-xl hover:opacity-95 transition">
+                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white shadow-xl hover:opacity-95 transition">
                         Оформить с выгодой
                     </button>
                 </div>
@@ -326,8 +309,8 @@
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-mono-code text-sky-400 uppercase">Максимум</span>
-                        <h3 class="font-display text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
-                        <div class="font-display text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
+                        <h3 class="text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
+                        <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
                             <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Пожизненная лицензия без доплат</li>
                             <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> Эксклюзивные визуальные стили</li>
@@ -335,7 +318,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-sky-400">✓</span> VIP-роль в сообществе</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-display text-xs font-bold text-white transition">
+                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
                         Купить навсегда
                     </button>
                 </div>
@@ -346,13 +329,13 @@
         <section id="faq" class="py-12 max-w-3xl mx-auto text-left">
             <div class="text-center mb-10">
                 <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ПОМОЩЬ</span>
-                <h2 class="font-display text-2xl sm:text-3xl font-black mt-2">Часто задаваемые вопросы</h2>
+                <h2 class="text-2xl sm:text-3xl font-black mt-2">Часто задаваемые вопросы</h2>
             </div>
 
             <div class="space-y-3">
                 <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(0)">
                     <div class="flex items-center justify-between">
-                        <h4 class="font-display text-sm font-bold text-white">Как быстро выдается доступ после оплаты?</h4>
+                        <h4 class="text-sm font-bold text-white">Как быстро выдается доступ после оплаты?</h4>
                         <span id="faq-icon-0" class="text-purple-400 font-bold text-lg">+</span>
                     </div>
                     <p id="faq-body-0" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
@@ -362,7 +345,7 @@
 
                 <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(1)">
                     <div class="flex items-center justify-between">
-                        <h4 class="font-display text-sm font-bold text-white">Как установить клиент на версию 1.16.5?</h4>
+                        <h4 class="text-sm font-bold text-white">Как установить клиент на версию 1.16.5?</h4>
                         <span id="faq-icon-1" class="text-purple-400 font-bold text-lg">+</span>
                     </div>
                     <p id="faq-body-1" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
@@ -379,7 +362,7 @@
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full theme-bg"></span>
-                <span class="font-display font-bold text-slate-300">MONOLIT</span>
+                <span class="font-bold text-slate-300">MONOLIT</span>
                 <span>© 2026 Все права защищены.</span>
             </div>
             <p>Не является официальным продуктом Minecraft. Не одобрено Mojang или Microsoft.</p>
@@ -392,7 +375,7 @@
             <div class="flex items-center justify-between mb-6">
                 <div>
                     <span class="font-mono-code text-[11px] text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
-                    <h3 id="modal-title" class="font-display text-xl font-bold text-white mt-0.5">Тариф</h3>
+                    <h3 id="modal-title" class="text-xl font-bold text-white mt-0.5">Тариф</h3>
                 </div>
                 <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
             </div>
@@ -414,10 +397,10 @@
 
                 <div class="p-4 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-between">
                     <span class="text-xs text-slate-400">Итого к оплате:</span>
-                    <span id="modal-price" class="font-display text-2xl font-bold text-white">0 ₽</span>
+                    <span id="modal-price" class="text-2xl font-bold text-white">0 ₽</span>
                 </div>
 
-                <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-display text-xs font-bold text-white theme-glow hover:opacity-95 transition">
+                <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                     Оплатить (СБП / Карта / Crypto)
                 </button>
             </div>
