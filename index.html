@@ -134,7 +134,7 @@
 
             <!-- Кнопки входа и покупки рядом -->
             <div class="flex items-center gap-2.5">
-                <button onclick="openAuthModal()" id="nav-auth-btn" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
+                <button onclick="openAuthModal()" id="nav-auth-btn" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition cursor-pointer">
                     Вход
                 </button>
                 <a href="#pricing" class="px-5 py-2.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
@@ -144,19 +144,19 @@
         </nav>
     </header>
 
-    <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ -->
-    <div class="fixed bottom-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
-        <div class="pointer-events-auto flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/90 backdrop-blur-2xl border border-white/15 shadow-2xl">
+    <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ (Исправлена проблема с кликами) -->
+    <div class="fixed bottom-5 inset-x-0 z-50 flex justify-center px-4">
+        <div class="flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/95 backdrop-blur-2xl border border-white/15 shadow-2xl">
             <span class="text-[11px] text-slate-400 hidden sm:inline font-medium">Палитра:</span>
-            <button onclick="setTheme('#a855f7', '#38bdf8')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-sky-400 ring-2 ring-white/30 hover:scale-110 transition" title="Кибер Нова"></button>
-            <button onclick="setTheme('#f43f5e', '#fb923c')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-orange-400 ring-1 ring-white/20 hover:scale-110 transition" title="Алый Закат"></button>
-            <button onclick="setTheme('#10b981', '#06b6d4')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 ring-1 ring-white/20 hover:scale-110 transition" title="Изумруд"></button>
-            <button onclick="setTheme('#6366f1', '#ec4899')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 ring-1 ring-white/20 hover:scale-110 transition" title="Синтвейв"></button>
-            <button onclick="setTheme('#eab308', '#ef4444')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-yellow-400 to-red-500 ring-1 ring-white/20 hover:scale-110 transition" title="Золотой Огонь"></button>
+            <button onclick="setTheme('#a855f7', '#38bdf8')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-sky-400 ring-2 ring-white/30 hover:scale-110 transition cursor-pointer" title="Кибер Нова"></button>
+            <button onclick="setTheme('#f43f5e', '#fb923c')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-orange-400 ring-1 ring-white/20 hover:scale-110 transition cursor-pointer" title="Алый Закат"></button>
+            <button onclick="setTheme('#10b981', '#06b6d4')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 ring-1 ring-white/20 hover:scale-110 transition cursor-pointer" title="Изумруд"></button>
+            <button onclick="setTheme('#6366f1', '#ec4899')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 ring-1 ring-white/20 hover:scale-110 transition cursor-pointer" title="Синтвейв"></button>
+            <button onclick="setTheme('#eab308', '#ef4444')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-yellow-400 to-red-500 ring-1 ring-white/20 hover:scale-110 transition cursor-pointer" title="Золотой Огонь"></button>
 
             <div class="h-5 w-[1px] bg-white/10 mx-1"></div>
 
-            <button onclick="cycleSpaceMode()" id="space-mode-btn" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-medium text-white transition">
+            <button onclick="cycleSpaceMode()" id="space-mode-btn" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-medium text-white transition cursor-pointer">
                 ✨ Космос: Звезды
             </button>
         </div>
@@ -266,9 +266,9 @@
                 </div>
 
                 <div class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1 self-start">
-                    <button onclick="setCurrency('RUB')" id="cur-RUB" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white">RUB ₽</button>
-                    <button onclick="setCurrency('USD')" id="cur-USD" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">USD $</button>
-                    <button onclick="setCurrency('EUR')" id="cur-EUR" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">EUR €</button>
+                    <button onclick="setCurrency('RUB')" id="cur-RUB" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white cursor-pointer">RUB ₽</button>
+                    <button onclick="setCurrency('USD')" id="cur-USD" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">USD $</button>
+                    <button onclick="setCurrency('EUR')" id="cur-EUR" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">EUR €</button>
                 </div>
             </div>
 
@@ -285,7 +285,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Автоматические обновления</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
+                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">
                         Выбрать тариф
                     </button>
                 </div>
@@ -306,7 +306,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Приоритетная поддержка 24/7</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
+                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">
                         Оформить с выгодой
                     </button>
                 </div>
@@ -324,7 +324,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> VIP-роль в сообществе</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
+                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">
                         Купить навсегда
                     </button>
                 </div>
@@ -383,7 +383,7 @@
                     <span class="text-[11px] font-semibold text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
                     <h3 id="modal-title" class="text-xl font-bold text-white mt-0.5">Тариф</h3>
                 </div>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white cursor-pointer">✕</button>
             </div>
 
             <div class="space-y-4">
@@ -396,7 +396,7 @@
                     <label class="text-xs text-slate-400 block mb-1.5">Промокод (пробуйте <span class="text-purple-400 font-semibold">MONOLIT20</span>)</label>
                     <div class="flex gap-2">
                         <input type="text" id="promo-code" placeholder="MONOLIT20" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-sm text-white uppercase font-semibold focus:outline-none">
-                        <button onclick="checkPromo()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white">ОК</button>
+                        <button onclick="checkPromo()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white cursor-pointer">ОК</button>
                     </div>
                     <p id="promo-msg" class="text-[11px] mt-1.5 hidden"></p>
                 </div>
@@ -406,7 +406,7 @@
                     <span id="modal-price" class="text-2xl font-bold text-white">0 ₽</span>
                 </div>
 
-                <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
+                <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">
                     Оплатить (СБП / Карта / Crypto)
                 </button>
             </div>
@@ -416,7 +416,7 @@
     <!-- МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ И ЛИЧНОГО КАБИНЕТА -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-card rounded-3xl max-w-sm w-full p-6 sm:p-8 border border-white/15 text-left relative">
-            <button onclick="closeAuthModal()" class="absolute top-5 right-5 w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center">✕</button>
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center cursor-pointer">✕</button>
 
             <!-- Форма Входа -->
             <div id="login-section">
@@ -432,7 +432,7 @@
                     </div>
                 </div>
                 <div id="login-msg" class="text-xs text-rose-400 mt-2"></div>
-                <button onclick="loginWeb()" class="mt-5 w-full py-3 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">Войти</button>
+                <button onclick="loginWeb()" class="mt-5 w-full py-3 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">Войти</button>
                 <span onclick="switchAuthTab('register')" class="text-xs text-cyan-400 cursor-pointer mt-4 block text-center hover:underline">Нет аккаунта? Зарегистрироваться</span>
             </div>
 
@@ -450,7 +450,7 @@
                     </div>
                 </div>
                 <div id="reg-msg" class="text-xs text-rose-400 mt-2"></div>
-                <button onclick="registerWeb()" class="mt-5 w-full py-3 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">Создать аккаунт</button>
+                <button onclick="registerWeb()" class="mt-5 w-full py-3 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition cursor-pointer">Создать аккаунт</button>
                 <span onclick="switchAuthTab('login')" class="text-xs text-cyan-400 cursor-pointer mt-4 block text-center hover:underline">Уже есть аккаунт? Войти</span>
             </div>
 
@@ -462,16 +462,14 @@
                     <p>Подписка до: <span id="sub-display" class="text-purple-400 font-bold"></span></p>
                     <p>Статус HWID: <span id="hwid-display" class="text-cyan-400 font-bold"></span></p>
                 </div>
-                <button onclick="resetHwid()" class="mt-4 w-full py-3 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 font-bold text-xs text-white hover:opacity-95 transition">Сбросить привязку HWID</button>
-                <button onclick="logout()" class="mt-2 w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-300 transition">Выйти из аккаунта</button>
+                <button onclick="resetHwid()" class="mt-4 w-full py-3 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 font-bold text-xs text-white hover:opacity-95 transition cursor-pointer">Сбросить привязку HWID</button>
+                <button onclick="logout()" class="mt-2 w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-300 transition cursor-pointer">Выйти из аккаунта</button>
                 <div id="dash-msg" class="text-xs text-emerald-400 mt-2 text-center"></div>
             </div>
         </div>
     </div>
 
     <script>
-        const API_URL = 'http://localhost:3000/api';
-
         let accent1 = '#a855f7';
         let accent2 = '#38bdf8';
 
@@ -616,9 +614,9 @@
         function setCurrency(cur) {
             currency = cur;
             document.querySelectorAll('.cur-btn').forEach(b => {
-                b.className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white';
+                b.className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white cursor-pointer';
             });
-            document.getElementById(`cur-${cur}`).className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white';
+            document.getElementById(`cur-${cur}`).className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white cursor-pointer';
 
             document.querySelectorAll('[data-price-rub]').forEach(el => {
                 const rub = Number(el.getAttribute('data-price-rub'));
@@ -673,9 +671,10 @@
             const m = document.getElementById('auth-modal');
             m.classList.remove('hidden');
             m.classList.add('flex');
+            
             const savedUser = localStorage.getItem('monolit_user');
             if (savedUser) {
-                // Если сессия была сохранена
+                // Если пользователь уже был залогинен
             }
         }
 
