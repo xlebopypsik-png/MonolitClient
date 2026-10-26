@@ -1,292 +1,139 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monolit Client — Официальный сайт</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { 
-            background-color: #0a0a0e; 
-            color: #fff; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            overflow-x: hidden;
+// Добавьте переменную карточки авторизации в список полей класса (рядом с txtUsername):
+        private RoundedCard cardLogin;
+
+        private void SetupMainControls()
+        {
+            lblTitle = new SmoothLabel
+            {
+                OwnerForm = this,
+                Text = "MONOLIT",
+                Font = new Font("Segoe UI", 28f, FontStyle.Bold),
+                ForeColor = Color.White,
+                Size = new Size(740, 56)
+            };
+
+            lblSubtitle = new SmoothLabel
+            {
+                OwnerForm = this,
+                Text = "Версия: Monolit Client 26.2",
+                Font = new Font("Segoe UI", 9.5f, FontStyle.Regular),
+                ForeColor = Color.FromArgb(165, 170, 190),
+                Size = new Size(740, 24)
+            };
+
+            lblPlayTime = new SmoothLabel
+            {
+                OwnerForm = this,
+                Text = FormatPlayTime(totalPlayTimeSeconds),
+                Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(139, 92, 246),
+                Size = new Size(740, 22)
+            };
+
+            // Красивая карточка-контейнер для входа в стиле лаунчера
+            cardLogin = new RoundedCard
+            {
+                Size = new Size(300, 120),
+                CornerRadius = 18,
+                EnableGlow = false // Чтобы не перегружать светящимися рамками главный экран
+            };
+            Controls.Add(cardLogin);
+
+            // Поле ввода Логина
+            txtUsername = new TextBox
+            {
+                Text = "Логин с сайта",
+                Font = new Font("Segoe UI", 10f),
+                BackColor = Color.FromArgb(20, 21, 30),
+                ForeColor = Color.Gray,
+                BorderStyle = BorderStyle.None,
+                Size = new Size(260, 24)
+            };
+            txtUsername.Enter += (s, ev) => { if (txtUsername.Text == "Логин с сайта") { txtUsername.Text = ""; txtUsername.ForeColor = Color.White; } };
+            txtUsername.Leave += (s, ev) => { if (string.IsNullOrWhiteSpace(txtUsername.Text)) { txtUsername.Text = "Логин с сайта"; txtUsername.ForeColor = Color.Gray; } };
+            cardLogin.Controls.Add(txtUsername);
+
+            // Поле ввода Пароля
+            txtPassword = new TextBox
+            {
+                Text = "Пароль",
+                Font = new Font("Segoe UI", 10f),
+                BackColor = Color.FromArgb(20, 21, 30),
+                ForeColor = Color.Gray,
+                BorderStyle = BorderStyle.None,
+                Size = new Size(260, 24)
+            };
+            txtPassword.Enter += (s, ev) => { if (txtPassword.Text == "Пароль") { txtPassword.Text = ""; txtPassword.ForeColor = Color.White; txtPassword.PasswordChar = '•'; } };
+            txtPassword.Leave += (s, ev) => { if (string.IsNullOrWhiteSpace(txtPassword.Text)) { txtPassword.Text = "Пароль"; txtPassword.ForeColor = Color.Gray; txtPassword.PasswordChar = '\0'; } };
+            cardLogin.Controls.Add(txtPassword);
+
+            btnStart = new ModernButton
+            {
+                Text = "Запустить клиент",
+                Size = new Size(234, 56),
+                CornerRadius = 26,
+                Font = new Font("Segoe UI", 11.5f, FontStyle.Bold)
+            };
+            btnStart.Click += BtnStart_Click;
+            Controls.Add(btnStart);
+
+            pbLoad = new RoundedProgressBar
+            {
+                Size = new Size(320, 10),
+                CornerRadius = 5,
+                Visible = false
+            };
+            Controls.Add(pbLoad);
+
+            btnSettings = new ModernButton
+            {
+                IconKind = ButtonIconKind.Settings,
+                Size = new Size(44, 44),
+                CornerRadius = 18,
+                IsSecondary = true
+            };
+            btnSettings.Click += (s, e) => ShowConfig();
+            Controls.Add(btnSettings);
+
+            btnVersion = new ModernButton
+            {
+                IconKind = ButtonIconKind.Versions,
+                Size = new Size(44, 44),
+                CornerRadius = 18,
+                IsSecondary = true
+            };
+            btnVersion.Click += (s, e) => ShowVersions();
+            Controls.Add(btnVersion);
+
+            btnOpenFolder = new ModernButton
+            {
+                IconKind = ButtonIconKind.Folder,
+                Size = new Size(44, 44),
+                CornerRadius = 18,
+                IsSecondary = true
+            };
+            btnOpenFolder.Click += (s, e) => OpenGameFolder();
+            Controls.Add(btnOpenFolder);
+
+            btnLogs = new ModernButton
+            {
+                IconKind = ButtonIconKind.Logs,
+                Size = new Size(44, 44),
+                CornerRadius = 18,
+                IsSecondary = true
+            };
+            btnLogs.Click += (s, e) => ShowLogs();
+            Controls.Add(btnLogs);
+
+            btnBack = new ModernButton
+            {
+                Text = "← Назад",
+                Size = new Size(105, 38),
+                Location = new Point(20, TitleBarHeight + 14),
+                CornerRadius = 16,
+                IsSecondary = true,
+                Visible = false
+            };
+            btnBack.Click += (s, e) => ShowMain();
+            Controls.Add(btnBack);
         }
-        /* Шапка сайта */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(16, 17, 24, 0.8);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-        }
-        .logo { font-size: 22px; font-weight: bold; background: linear-gradient(135deg, #8B5CF6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-btn {
-            background: linear-gradient(135deg, #8B5CF6, #06B6D4);
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .nav-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-        /* Главный экран (Hero) */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-        }
-        .hero h1 { font-size: 54px; margin-bottom: 10px; }
-        .hero p { color: #a5aab8; font-size: 18px; max-width: 600px; margin-bottom: 30px; }
-        .hero-buttons { display: flex; gap: 15px; }
-        .btn-download {
-            background: #181924;
-            border: 1px solid #8B5CF6;
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .btn-download:hover { background: rgba(139, 92, 246, 0.2); }
-
-        /* Модальное окно авторизации */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal.active { display: flex; }
-        .card { 
-            background: #101118; 
-            border: 1px solid #8B5CF6; 
-            border-radius: 20px; 
-            padding: 30px; 
-            width: 380px; 
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); 
-            text-align: center; 
-            position: relative;
-        }
-        .close-modal {
-            position: absolute; top: 15px; right: 20px;
-            background: none; border: none; color: #a5aab8; font-size: 20px; cursor: pointer; width: auto; padding: 0; margin: 0;
-        }
-        .close-modal:hover { color: #fff; }
-        input { 
-            width: 100%; padding: 12px; margin: 10px 0; 
-            background: #181924; border: 1px solid #282a3a; 
-            color: #fff; border-radius: 10px; outline: none; transition: 0.2s; 
-        }
-        input:focus { border-color: #8B5CF6; }
-        .card button { 
-            width: 100%; padding: 12px; margin-top: 10px; 
-            background: linear-gradient(135deg, #8B5CF6, #06B6D4); 
-            border: none; color: #fff; font-weight: bold; border-radius: 10px; cursor: pointer; 
-        }
-        .hidden { display: none; }
-        .error { color: #f43f5e; font-size: 13px; margin-top: 8px; }
-        .success { color: #10b981; font-size: 13px; margin-top: 8px; }
-        .link { color: #06B6D4; cursor: pointer; margin-top: 15px; display: block; font-size: 13px; }
-        .link:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-
-    <!-- Шапка -->
-    <header>
-        <div class="logo">MONOLIT CLIENT</div>
-        <div>
-            <button class="nav-btn" onclick="openAuthModal()" id="nav-auth-btn">Личный кабинет</button>
-        </div>
-    </header>
-
-    <!-- Главный экран -->
-    <section class="hero">
-        <h1>Эволюция вашего геймплея</h1>
-        <p>Monolit Client — передовой утилитный клиент для Minecraft 1.16.5 на базе Fabric с защищенной системой авторизации и лаунчером.</p>
-        <div class="hero-buttons">
-            <a href="#" class="btn-download" onclick="alert('Скачивание лаунчера начнется в разработке!')">Скачать лаунчер</a>
-            <button class="nav-btn" onclick="openAuthModal()">Войти в аккаунт</button>
-        </div>
-    </section>
-
-    <!-- Модальное окно Входа / Регистрации / ЛК -->
-    <div class="modal" id="auth-modal">
-        <div class="card">
-            <button class="close-modal" onclick="closeAuthModal()">×</button>
-            
-            <!-- Форма Входа -->
-            <div id="login-section">
-                <h2>Вход в аккаунт</h2>
-                <input type="text" id="login-user" placeholder="Логин">
-                <input type="password" id="login-pass" placeholder="Пароль">
-                <button onclick="loginWeb()">Войти</button>
-                <div id="login-msg" class="error"></div>
-                <span class="link" onclick="switchModalTab('register')">Нет аккаунта? Зарегистрироваться</span>
-            </div>
-
-            <!-- Форма Регистрации -->
-            <div id="register-section" class="hidden">
-                <h2>Регистрация</h2>
-                <input type="text" id="reg-user" placeholder="Придумайте логин">
-                <input type="password" id="reg-pass" placeholder="Придумайте пароль">
-                <button onclick="registerWeb()">Создать аккаунт</button>
-                <div id="reg-msg" class="error"></div>
-                <span class="link" onclick="switchModalTab('login')">Уже есть аккаунт? Войти</span>
-            </div>
-
-            <!-- Личный Кабинет -->
-            <div id="dashboard-section" class="hidden">
-                <h2>Личный кабинет</h2>
-                <p style="color: #a5aab8; font-size: 14px;">Игрок: <span id="user-display" style="color: #fff; font-weight: bold;"></span></p>
-                <p style="color: #a5aab8; font-size: 14px;">Подписка до: <br><b id="sub-display" style="color: #8B5CF6;"></b></p>
-                <p style="color: #a5aab8; font-size: 14px;">Статус HWID: <br><b id="hwid-display" style="color: #06B6D4;"></b></p>
-                
-                <button onclick="resetHwid()" style="background: linear-gradient(135deg, #e11d48, #f43f5e); margin-top: 5px;">Сбросить привязку HWID</button>
-                <button onclick="logout()" style="background: #282a3a; margin-top: 10px;">Выйти</button>
-                <div id="dash-msg" class="success"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const API_URL = 'http://localhost:3000/api';
-
-        function openAuthModal() {
-            document.getElementById('auth-modal').classList.add('active');
-            // Проверим, выполнен ли уже вход
-            const savedUser = localStorage.getItem('monolit_user');
-            if(savedUser) {
-                // Если сессия сохранена в браузере, можно подгрузить данные или просто показать ЛК
-            }
-        }
-
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.remove('active');
-        }
-
-        function switchModalTab(tab) {
-            if(tab === 'register') {
-                document.getElementById('login-section').classList.add('hidden');
-                document.getElementById('register-section').classList.remove('hidden');
-            } else {
-                document.getElementById('register-section').classList.add('hidden');
-                document.getElementById('login-section').classList.remove('hidden');
-            }
-        }
-
-        async function registerWeb() {
-            const username = document.getElementById('reg-user').value.trim();
-            const password = document.getElementById('reg-pass').value;
-            const msg = document.getElementById('reg-msg');
-            msg.innerText = '';
-
-            if(!username || !password) { msg.innerText = 'Заполните все поля!'; return; }
-
-            try {
-                const res = await fetch(`${API_URL}/register`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-                const data = await res.json();
-                if(res.ok) {
-                    alert('Регистрация успешна! Теперь вы можете войти.');
-                    switchModalTab('login');
-                } else {
-                    msg.innerText = data.error;
-                }
-            } catch(e) {
-                msg.innerText = 'Ошибка соединения с сервером';
-            }
-        }
-
-        async function loginWeb() {
-            const username = document.getElementById('login-user').value.trim();
-            const password = document.getElementById('login-pass').value;
-            const msg = document.getElementById('login-msg');
-            msg.innerText = '';
-
-            try {
-                const res = await fetch(`${API_URL}/login-web`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-                const data = await res.json();
-                if(res.ok) {
-                    localStorage.setItem('monolit_user', data.username);
-                    showDashboard(data);
-                } else {
-                    msg.innerText = data.error;
-                }
-            } catch(e) {
-                msg.innerText = 'Ошибка соединения с сервером';
-            }
-        }
-
-        function showDashboard(data) {
-            document.getElementById('login-section').classList.add('hidden');
-            document.getElementById('register-section').classList.add('hidden');
-            document.getElementById('dashboard-section').classList.remove('hidden');
-            document.getElementById('user-display').innerText = data.username;
-            document.getElementById('sub-display').innerText = new Date(data.sub).toLocaleString();
-            document.getElementById('hwid-display').innerText = data.hwid;
-            document.getElementById('nav-auth-btn').innerText = data.username;
-        }
-
-        async function resetHwid() {
-            const username = document.getElementById('user-display').innerText;
-            const msg = document.getElementById('dash-msg');
-            msg.innerText = '';
-
-            try {
-                const res = await fetch(`${API_URL}/reset-hwid`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username })
-                });
-                const data = await res.json();
-                if(res.ok) {
-                    msg.innerText = 'HWID успешно сброшен!';
-                    document.getElementById('hwid-display').innerText = 'Не привязан';
-                } else {
-                    alert(data.error);
-                }
-            } catch(e) {
-                alert('Ошибка сброса HWID');
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('monolit_user');
-            document.getElementById('dashboard-section').classList.add('hidden');
-            document.getElementById('login-section').classList.remove('hidden');
-            document.getElementById('nav-auth-btn').innerText = 'Личный кабинет';
-        }
-    </script>
-</body>
-</html>
