@@ -1,770 +1,203 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONOLIT — Эстетика превосходства (26.2)</title>
-    <!-- Иконка вкладки (Favicon) с буквой M -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='1.5'/><path d='M12 2L12 22' stroke='%23ffffff' stroke-width='0.75' opacity='0.6'/></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Monolit Client — Личный кабинет</title>
     <style>
-        :root {
-            --accent-1: #a855f7;
-            --accent-2: #38bdf8;
-            --accent-rgb: 168, 85, 247;
-            --accent2-rgb: 56, 189, 248;
-            --bg-dark: #030307;
+        body { 
+            background-color: #0a0a0e; 
+            color: #fff; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
         }
-
-        * {
-            box-sizing: border-box;
-            user-select: none;
+        .card { 
+            background: #101118; 
+            border: 1px solid #8B5CF6; 
+            border-radius: 20px; 
+            padding: 30px; 
+            width: 360px; 
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.25); 
+            text-align: center; 
         }
-
-        body {
-            background-color: var(--bg-dark);
-            color: #f8fafc;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+        h2 { margin-top: 0; color: #fff; font-size: 22px; }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            background: #181924; 
+            border: 1px solid #282a3a; 
+            color: #fff; 
+            border-radius: 10px; 
+            box-sizing: border-box; 
+            outline: none;
+            transition: 0.2s;
         }
-
-        .theme-text {
-            background: linear-gradient(135deg, #ffffff 10%, var(--accent-1) 55%, var(--accent-2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        input:focus { border-color: #8B5CF6; }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 10px; 
+            background: linear-gradient(135deg, #8B5CF6, #06B6D4); 
+            border: none; 
+            color: #fff; 
+            font-weight: bold; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            transition: 0.2s; 
         }
-
-        .theme-bg {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-        }
-
-        .theme-glow {
-            box-shadow: 0 0 45px -10px rgba(var(--accent-rgb), 0.5);
-        }
-
-        .glass-card {
-            background: linear-gradient(165deg, rgba(18, 18, 32, 0.72) 0%, rgba(7, 7, 14, 0.88) 100%);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-out;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.18), transparent 45%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .glass-card:hover::before {
-            opacity: 1;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(var(--accent-rgb), 0.6);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 40px -10px rgba(var(--accent-rgb), 0.4);
-            transform: translateY(-4px);
-        }
-
-        @keyframes aurora-float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(25px, -20px) scale(1.08); }
-        }
-
-        .aurora-blob {
-            animation: aurora-float 9s ease-in-out infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 28s linear infinite;
-        }
-
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .hidden { display: none; }
+        .error { color: #f43f5e; font-size: 13px; margin-top: 8px; }
+        .success { color: #10b981; font-size: 13px; margin-top: 8px; }
+        .link { color: #06B6D4; cursor: pointer; margin-top: 15px; display: block; font-size: 13px; }
+        .link:hover { text-decoration: underline; }
+        p { color: #a5aab8; font-size: 14px; line-height: 1.5; }
     </style>
 </head>
-<body class="relative min-h-screen pb-24">
+<body>
 
-    <!-- Космический Холст -->
-    <canvas id="space-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <!-- Карточка авторизации / регистрации -->
+    <div class="card" id="auth-card">
+        <h2>Monolit Portal</h2>
+        
+        <!-- Форма Входа -->
+        <div id="login-form">
+            <input type="text" id="login-user" placeholder="Логин">
+            <input type="password" id="login-pass" placeholder="Пароль">
+            <button onclick="loginWeb()">Войти</button>
+            <div id="login-msg" class="error"></div>
+            <span class="link" onclick="toggleForm('register')">Нет аккаунта? Зарегистрироваться</span>
+        </div>
 
-    <!-- Свечение Авроры -->
-    <div class="fixed -top-48 left-1/4 w-[500px] h-[500px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-1); opacity: 0.18;"></div>
-    <div class="fixed top-1/2 -right-32 w-[460px] h-[460px] rounded-full blur-[160px] pointer-events-none z-0 aurora-blob" style="background: var(--accent-2); opacity: 0.14; animation-delay: 3s;"></div>
-
-    <!-- НАВИГАЦИЯ -->
-    <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
-        <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
-                    <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <span class="font-black text-base text-white theme-text">M</span>
-                    </div>
-                </div>
-                <div>
-                    <span class="font-black tracking-wider text-sm sm:text-base text-white block leading-none">MONOLIT</span>
-                    <span class="text-[10px] text-slate-400 tracking-widest font-semibold">VERSION 26.2</span>
-                </div>
-            </a>
-
-            <div class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-xl p-1">
-                <a href="#features" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Возможности</a>
-                <a href="#pricing" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Тарифы</a>
-                <a href="#faq" class="px-4 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">FAQ</a>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <button onclick="openAuthModal()" id="auth-nav-btn" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white transition">
-                    Войти
-                </button>
-                <a href="#pricing" class="px-5 py-2 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition hidden sm:inline-block">
-                    Купить доступ
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ -->
-    <div class="fixed bottom-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
-        <div class="pointer-events-auto flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/90 backdrop-blur-2xl border border-white/15 shadow-2xl">
-            <span class="text-[11px] text-slate-400 hidden sm:inline font-medium">Палитра:</span>
-            <button onclick="setTheme('#a855f7', '#38bdf8')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-sky-400 ring-2 ring-white/30 hover:scale-110 transition" title="Кибер Нова"></button>
-            <button onclick="setTheme('#f43f5e', '#fb923c')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-orange-400 ring-1 ring-white/20 hover:scale-110 transition" title="Алый Закат"></button>
-            <button onclick="setTheme('#10b981', '#06b6d4')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 ring-1 ring-white/20 hover:scale-110 transition" title="Изумруд"></button>
-            <button onclick="setTheme('#6366f1', '#ec4899')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 ring-1 ring-white/20 hover:scale-110 transition" title="Синтвейв"></button>
-            <button onclick="setTheme('#eab308', '#ef4444')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-yellow-400 to-red-500 ring-1 ring-white/20 hover:scale-110 transition" title="Золотой Огонь"></button>
-
-            <div class="h-5 w-[1px] bg-white/10 mx-1"></div>
-
-            <button onclick="cycleSpaceMode()" id="space-mode-btn" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-medium text-white transition">
-                ✨ Космос: Звезды
-            </button>
+        <!-- Форма Регистрации -->
+        <div id="register-form" class="hidden">
+            <input type="text" id="reg-user" placeholder="Придумайте логин">
+            <input type="password" id="reg-pass" placeholder="Придумайте пароль">
+            <button onclick="registerWeb()">Создать аккаунт</button>
+            <div id="reg-msg" class="error"></div>
+            <span class="link" onclick="toggleForm('login')">Уже есть аккаунт? Войти</span>
         </div>
     </div>
 
-    <main class="relative z-10 pt-36 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-
-        <!-- ГЛАВНЫЙ ЭКРАН -->
-        <section class="space-y-8 min-h-[65vh] flex flex-col items-center justify-center">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-200">MONOLIT CORE • VERSION 26.2</span>
-            </div>
-
-            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl">
-                ЭСТЕТИКА <span class="theme-text">ПРЕВОСХОДСТВА</span> И КОМФОРТА.
-            </h1>
-
-            <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                Современный клиент с упором на чистую визуальную эстетику, плавную кинематику движений и абсолютную безопасность конфиденциальности.
-            </p>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <a href="#pricing" class="px-8 py-4 rounded-2xl theme-bg font-bold text-xs sm:text-sm text-white theme-glow hover:scale-[1.02] transition-transform">
-                    Получить доступ
-                </a>
-                <a href="#features" class="px-8 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs sm:text-sm font-semibold text-slate-200 transition">
-                    Узнать больше
-                </a>
-            </div>
-
-            <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg w-full mx-auto">
-                <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="text-lg font-black text-white">Version 26.2</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Релиз сборки</div>
-                </div>
-                <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="text-lg font-black theme-text">OpenGL</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Оптимизация</div>
-                </div>
-                <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="text-lg font-black text-white">24/7</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Поддержка</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- БЕГУЩАЯ СТРОКА -->
-        <div class="my-20 py-4 border-y border-white/10 overflow-hidden bg-white/[0.01]">
-            <div class="animate-marquee flex items-center gap-10 font-bold text-xs uppercase tracking-widest text-slate-400">
-                <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
-                <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
-                <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
-                <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ВЕРСИЯ СБОРКИ 26.2</span>
-                <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
-                <!-- Дубль -->
-                <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
-                <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
-                <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
-                <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ВЕРСИЯ СБОРКИ 26.2</span>
-                <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
-            </div>
-        </div>
-
-        <!-- КАРТОЧКИ ВОЗМОЖНОСТЕЙ -->
-        <section id="features" class="py-16 text-left">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-xs font-semibold uppercase tracking-widest text-sky-400">ПРЕИМУЩЕСТВА</span>
-                <h2 class="text-2xl sm:text-4xl font-black mt-2">Создан для максимального комфорта</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">✦</div>
-                    <h3 class="text-lg font-bold text-white mb-2.5">Атмосфера и Шейдеры</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Кастомное ночное небо, неоновые следы и плавное свечение окружения создают неповторимый визуальный стиль.
-                    </p>
-                </div>
-
-                <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">⚡</div>
-                    <h3 class="text-lg font-bold text-white mb-2.5">Интеллектуальная Кинематика</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Алгоритмы расчета траекторий обеспечивают мягкое наведение без резких углов и микролагов.
-                    </p>
-                </div>
-
-                <div class="glass-card tilt-card rounded-3xl p-7">
-                    <div class="w-12 h-12 rounded-2xl theme-bg flex items-center justify-center text-xl font-bold text-white mb-5 theme-glow">🛡</div>
-                    <h3 class="text-lg font-bold text-white mb-2.5">Полная Конфиденциальность</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Надежная защита сессии и мгновенная очистка дампов памяти при закрытии игры.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ТАРИФЫ -->
-        <section id="pricing" class="py-16 text-left">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-                <div>
-                    <span class="text-xs font-semibold uppercase tracking-widest text-purple-400">ЛИЦЕНЗИЯ</span>
-                    <h2 class="text-2xl sm:text-4xl font-black mt-2">Тарифные планы</h2>
-                </div>
-
-                <div class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1 self-start">
-                    <button onclick="setCurrency('RUB')" id="cur-RUB" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white">RUB ₽</button>
-                    <button onclick="setCurrency('USD')" id="cur-USD" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">USD $</button>
-                    <button onclick="setCurrency('EUR')" id="cur-EUR" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">EUR €</button>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
-                    <div>
-                        <span class="text-xs font-semibold text-slate-400 uppercase">Старт</span>
-                        <h3 class="text-xl font-bold text-white mt-1">30 Дней</h3>
-                        <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Полный доступ к версии 26.2</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Все визуальные шейдеры и эффекты</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Автоматические обновления</li>
-                        </ul>
-                    </div>
-                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                        Выбрать тариф
-                    </button>
-                </div>
-
-                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between border-purple-500/40 theme-glow relative">
-                    <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold theme-bg text-white">
-                        ПОПУЛЯРНЫЙ
-                    </div>
-                    <div>
-                        <span class="text-xs font-semibold text-purple-300 uppercase">Оптимальный</span>
-                        <h3 class="text-xl font-bold text-white mt-1">90 Дней</h3>
-                        <div class="text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
-                        <ul class="space-y-3 text-xs text-slate-200">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Все функции тарифа «Старт»</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Доступ к бэтам и новым обновлениям</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Сброс HWID в один клик</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Приоритетная поддержка 24/7</li>
-                        </ul>
-                    </div>
-                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                        Оформить с выгодой
-                    </button>
-                </div>
-
-                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
-                    <div>
-                        <span class="text-xs font-semibold text-sky-400 uppercase">Максимум</span>
-                        <h3 class="text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
-                        <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Пожизненная лицензия без доплат</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Эксклюзивные визуальные стили</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Мгновенный сброс привязки</li>
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> VIP-роль в сообществе</li>
-                        </ul>
-                    </div>
-                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                        Купить навсегда
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" class="py-12 max-w-3xl mx-auto text-left">
-            <div class="text-center mb-10">
-                <span class="text-xs font-semibold uppercase tracking-widest text-purple-400">ПОМОЩЬ</span>
-                <h2 class="text-2xl sm:text-3xl font-black mt-2">Часто задаваемые вопросы</h2>
-            </div>
-
-            <div class="space-y-3">
-                <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(0)">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-sm font-bold text-white">Как быстро выдается доступ после оплаты?</h4>
-                        <span id="faq-icon-0" class="text-purple-400 font-bold text-lg">+</span>
-                    </div>
-                    <p id="faq-body-0" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Ключ активации и инструкция приходят автоматически в течение 5 секунд после подтверждения платежа.
-                    </p>
-                </div>
-
-                <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(1)">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-sm font-bold text-white">Как установить клиент версии 26.2?</h4>
-                        <span id="faq-icon-1" class="text-purple-400 font-bold text-lg">+</span>
-                    </div>
-                    <p id="faq-body-1" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Клиент устанавливается в один клик по нашей подробной инструкции для текущей сборки.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ПОДВАЛ -->
-    <footer class="relative z-10 border-t border-white/10 py-8 px-4 text-center text-xs text-slate-500 mt-12">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full theme-bg"></span>
-                <span class="font-bold text-slate-300">MONOLIT</span>
-                <span>© 2026 Все права защищены.</span>
-            </div>
-            <p>Не является официальным продуктом. Все права на интеллектуальную собственность принадлежат их владельцам.</p>
-        </div>
-    </footer>
-
-    <!-- МОДАЛЬНОЕ ОКНО ОПЛАТЫ -->
-    <div id="buy-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <span class="text-[11px] font-semibold text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
-                    <h3 id="modal-title" class="text-xl font-bold text-white mt-0.5">Тариф</h3>
-                </div>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
-            </div>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Ваш никнейм или E-mail</label>
-                    <input type="text" placeholder="Введите никнейм" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
-                </div>
-
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Промокод (пробуйте <span class="text-purple-400 font-semibold">MONOLIT20</span>)</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="promo-code" placeholder="MONOLIT20" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-sm text-white uppercase font-semibold focus:outline-none">
-                        <button onclick="checkPromo()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white">ОК</button>
-                    </div>
-                    <p id="promo-msg" class="text-[11px] mt-1.5 hidden"></p>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-between">
-                    <span class="text-xs text-slate-400">Итого к оплате:</span>
-                    <span id="modal-price" class="text-2xl font-bold text-white">0 ₽</span>
-                </div>
-
-                <button onclick="finishOrder()" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                    Оплатить (СБП / Карта / Crypto)
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ / ВХОДА -->
-    <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <span class="text-[11px] font-semibold text-purple-400 uppercase" id="auth-subtitle">ЛИЧНЫЙ КАБИНЕТ</span>
-                    <h3 id="auth-title" class="text-xl font-bold text-white mt-0.5">Вход в систему</h3>
-                </div>
-                <button onclick="closeAuthModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
-            </div>
-
-            <div class="space-y-4" id="auth-form-container">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Никнейм</label>
-                    <input type="text" id="auth-username" placeholder="Ваш ник" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
-                </div>
-
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Пароль</label>
-                    <input type="password" id="auth-password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-sm text-white focus:outline-none focus:border-purple-500">
-                </div>
-
-                <button onclick="handleAuthSubmit()" id="auth-submit-btn" class="w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
-                    Войти в аккаунт
-                </button>
-
-                <div class="text-center pt-2">
-                    <button onclick="toggleAuthMode()" id="auth-toggle-btn" class="text-xs text-slate-400 hover:text-white transition">
-                        Нет аккаунта? <span class="text-purple-400 font-semibold">Зарегистрироваться</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- Личный Кабинет (Скрыт до входа) -->
+    <div class="card hidden" id="dashboard-card">
+        <h2>Личный кабинет</h2>
+        <p>Игрок: <span id="user-display" style="color: #fff; font-weight: bold;"></span></p>
+        <p>Подписка активна до: <br><b id="sub-display" style="color: #8B5CF6;"></b></p>
+        <p>Статус HWID: <br><b id="hwid-display" style="color: #06B6D4;"></b></p>
+        
+        <button onclick="resetHwid()" style="background: linear-gradient(135deg, #e11d48, #f43f5e);">Сбросить привязку HWID</button>
+        <button onclick="logout()" style="background: #282a3a; margin-top: 10px;">Выйти из аккаунта</button>
+        <div id="dash-msg" class="success"></div>
     </div>
 
     <script>
-        let accent1 = '#a855f7';
-        let accent2 = '#38bdf8';
+        const API_URL = 'http://localhost:3000/api'; // При публикации в интернет замените на адрес вашего VPS-сервера
 
-        function hexToRgb(hex) {
-            const c = hex.replace('#', '');
-            return `${parseInt(c.slice(0,2),16)}, ${parseInt(c.slice(2,4),16)}, ${parseInt(c.slice(4,6),16)}`;
+        function toggleForm(type) {
+            if(type === 'register') {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('register-form').classList.remove('hidden');
+            } else {
+                document.getElementById('register-form').classList.add('hidden');
+                document.getElementById('login-form').classList.remove('hidden');
+            }
         }
 
-        function setTheme(c1, c2) {
-            accent1 = c1;
-            accent2 = c2;
-            const r = document.documentElement;
-            r.style.setProperty('--accent-1', c1);
-            r.style.setProperty('--accent-2', c2);
-            r.style.setProperty('--accent-rgb', hexToRgb(c1));
-            r.style.setProperty('--accent2-rgb', hexToRgb(c2));
-        }
+        async function registerWeb() {
+            const username = document.getElementById('reg-user').value.trim();
+            const password = document.getElementById('reg-pass').value;
+            const msg = document.getElementById('reg-msg');
+            msg.innerText = '';
 
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mx', `${x}px`);
-                card.style.setProperty('--my', `${y}px`);
+            if(!username || !password) {
+                msg.innerText = 'Заполните все поля!';
+                return;
+            }
 
-                if (card.classList.contains('tilt-card')) {
-                    const rx = ((y / rect.height) - 0.5) * -6;
-                    const ry = ((x / rect.width) - 0.5) * 6;
-                    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                if (card.classList.contains('tilt-card')) {
-                    card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
-                }
-            });
-        });
-
-        const spaceCanvas = document.getElementById('space-canvas');
-        const spaceCtx = spaceCanvas.getContext('2d');
-        let spaceModes = ['stars', 'comets', 'warp'];
-        let spaceLabels = ['✨ Космос: Звезды', '☄️ Космос: Метеоры', '🚀 Космос: Гиперпрыжок'];
-        let spaceIdx = 0;
-        let stars = [];
-
-        function resizeSpace() {
-            spaceCanvas.width = window.innerWidth;
-            spaceCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeSpace);
-        resizeSpace();
-
-        for (let i = 0; i < 110; i++) {
-            stars.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                z: Math.random() * window.innerWidth,
-                r: Math.random() * 1.6 + 0.4,
-                vy: Math.random() * 0.6 + 0.2
-            });
-        }
-
-        function cycleSpaceMode() {
-            spaceIdx = (spaceIdx + 1) % spaceModes.length;
-            document.getElementById('space-mode-btn').textContent = spaceLabels[spaceIdx];
-        }
-
-        function renderSpace() {
-            spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
-            const mode = spaceModes[spaceIdx];
-
-            stars.forEach(s => {
-                if (mode === 'warp') {
-                    s.z -= 7;
-                    if (s.z <= 1) {
-                        s.z = spaceCanvas.width;
-                        s.x = Math.random() * spaceCanvas.width;
-                        s.y = Math.random() * spaceCanvas.height;
-                    }
-                    const cx = spaceCanvas.width / 2;
-                    const cy = spaceCanvas.height / 2;
-                    const k = 180 / s.z;
-                    const px = (s.x - cx) * k + cx;
-                    const py = (s.y - cy) * k + cy;
-                    spaceCtx.strokeStyle = accent2;
-                    spaceCtx.lineWidth = 1.6;
-                    spaceCtx.beginPath();
-                    spaceCtx.moveTo(px, py);
-                    spaceCtx.lineTo(px + (px - cx) * 0.08, py + (py - cy) * 0.08);
-                    spaceCtx.stroke();
-                } else if (mode === 'comets') {
-                    s.x -= s.vy * 3;
-                    s.y += s.vy * 2;
-                    if (s.y > spaceCanvas.height || s.x < 0) {
-                        s.y = Math.random() * spaceCanvas.height * 0.5;
-                        s.x = Math.random() * spaceCanvas.width + 200;
-                    }
-                    spaceCtx.strokeStyle = accent1;
-                    spaceCtx.lineWidth = s.r;
-                    spaceCtx.beginPath();
-                    spaceCtx.moveTo(s.x, s.y);
-                    spaceCtx.lineTo(s.x + 14, s.y - 9);
-                    spaceCtx.stroke();
+            try {
+                const res = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    alert('Регистрация успешна! Теперь вы можете войти.');
+                    toggleForm('login');
                 } else {
-                    s.y += s.vy;
-                    if (s.y > spaceCanvas.height) { s.y = 0; s.x = Math.random() * spaceCanvas.width; }
-                    spaceCtx.fillStyle = '#ffffff';
-                    spaceCtx.globalAlpha = 0.5;
-                    spaceCtx.beginPath();
-                    spaceCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                    spaceCtx.fill();
+                    msg.innerText = data.error;
                 }
-            });
-            spaceCtx.globalAlpha = 1;
-            requestAnimationFrame(renderSpace);
-        }
-        renderSpace();
-
-        function toggleFaq(index) {
-            const body = document.getElementById(`faq-body-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
-            const isHidden = body.classList.contains('hidden');
-            body.classList.toggle('hidden');
-            icon.textContent = isHidden ? '−' : '+';
-        }
-
-        let currency = 'RUB';
-        let currentRub = 790;
-        let discount = 1;
-        const rates = {
-            RUB: { r: 1, s: ' ₽' },
-            USD: { r: 0.011, s: ' $' },
-            EUR: { r: 0.010, s: ' €' }
-        };
-
-        function formatPrice(rub) {
-            const c = rates[currency];
-            return `${Math.round(rub * c.r * discount).toLocaleString('ru-RU')}${c.s}`;
-        }
-
-        function setCurrency(cur) {
-            currency = cur;
-            document.querySelectorAll('.cur-btn').forEach(b => {
-                b.className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white';
-            });
-            document.getElementById(`cur-${cur}`).className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white';
-
-            document.querySelectorAll('[data-price-rub]').forEach(el => {
-                const rub = Number(el.getAttribute('data-price-rub'));
-                const c = rates[currency];
-                el.textContent = `${Math.round(rub * c.r).toLocaleString('ru-RU')}${c.s}`;
-            });
-        }
-
-        function openModal(plan, rub) {
-            currentRub = rub;
-            discount = 1;
-            document.getElementById('modal-title').textContent = `Тариф «${plan}»`;
-            document.getElementById('promo-code').value = '';
-            document.getElementById('promo-msg').classList.add('hidden');
-            document.getElementById('modal-price').textContent = formatPrice(currentRub);
-            const m = document.getElementById('buy-modal');
-            m.classList.remove('hidden');
-            m.classList.add('flex');
-        }
-
-        function closeModal() {
-            const m = document.getElementById('buy-modal');
-            m.classList.add('hidden');
-            m.classList.remove('flex');
-        }
-
-        function checkPromo() {
-            const code = document.getElementById('promo-code').value.trim().toUpperCase();
-            const msg = document.getElementById('promo-msg');
-            msg.classList.remove('hidden');
-            if (code === 'MONOLIT20') {
-                discount = 0.8;
-                msg.textContent = '✓ Скидка 20% активирована!';
-                msg.className = 'text-[11px] mt-1.5 text-emerald-400';
-            } else {
-                discount = 1;
-                msg.textContent = '✕ Неверный промокод (пробуйте MONOLIT20)';
-                msg.className = 'text-[11px] mt-1.5 text-rose-400';
-            }
-            document.getElementById('modal-price').textContent = formatPrice(currentRub);
-        }
-
-        function finishOrder() {
-            alert('Заказ создан! Перенаправление на страницу оплаты...');
-            closeModal();
-        }
-
-        // --- ЛОГИКА АВТОРИЗАЦИИ И ЛИЧНОГО КАБИНЕТА ---
-        let isRegisterMode = false;
-        let currentUser = localStorage.getItem('monolit_user') ? JSON.parse(localStorage.getItem('monolit_user')) : null;
-
-        function updateAuthUI() {
-            const btn = document.getElementById('auth-nav-btn');
-            if (currentUser) {
-                btn.textContent = currentUser.username;
-                btn.classList.add('theme-bg');
-                btn.classList.remove('bg-white/10');
-            } else {
-                btn.textContent = 'Войти';
-                btn.classList.remove('theme-bg');
-                btn.classList.add('bg-white/10');
-            }
-        }
-        updateAuthUI();
-
-        function openAuthModal() {
-            if (currentUser) {
-                // Если уже вошел — показываем кабинет
-                showProfileModal();
-                return;
-            }
-            isRegisterMode = false;
-            renderAuthForm();
-            const m = document.getElementById('auth-modal');
-            m.classList.remove('hidden');
-            m.classList.add('flex');
-        }
-
-        function closeAuthModal() {
-            const m = document.getElementById('auth-modal');
-            m.classList.add('hidden');
-            m.classList.remove('flex');
-        }
-
-        function toggleAuthMode() {
-            isRegisterMode = !isRegisterMode;
-            renderAuthForm();
-        }
-
-        function renderAuthForm() {
-            const title = document.getElementById('auth-title');
-            const subtitle = document.getElementById('auth-subtitle');
-            const submitBtn = document.getElementById('auth-submit-btn');
-            const toggleBtn = document.getElementById('auth-toggle-btn');
-
-            if (isRegisterMode) {
-                subtitle.textContent = 'РЕГИСТРАЦИЯ АККАУНТА';
-                title.textContent = 'Создать профиль';
-                submitBtn.textContent = 'Зарегистрироваться';
-                toggleBtn.innerHTML = 'Уже есть аккаунт? <span class="text-purple-400 font-semibold">Войти</span>';
-            } else {
-                subtitle.textContent = 'ЛИЧНЫЙ КАБИНЕТ';
-                title.textContent = 'Вход в систему';
-                submitBtn.textContent = 'Войти в аккаунт';
-                toggleBtn.innerHTML = 'Нет аккаунта? <span class="text-purple-400 font-semibold">Зарегистрироваться</span>';
+            } catch(e) {
+                msg.innerText = 'Ошибка соединения с бэкенд-сервером';
             }
         }
 
-        function handleAuthSubmit() {
-            const username = document.getElementById('auth-username').value.trim();
-            const pass = document.getElementById('auth-password').value.trim();
+        async function loginWeb() {
+            const username = document.getElementById('login-user').value.trim();
+            const password = document.getElementById('login-pass').value;
+            const msg = document.getElementById('login-msg');
+            msg.innerText = '';
 
-            if (!username || !pass) {
-                alert('Пожалуйста, заполните все поля!');
-                return;
+            try {
+                const res = await fetch(`${API_URL}/login-web`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    localStorage.setItem('monolit_user', data.username);
+                    showDashboard(data);
+                } else {
+                    msg.innerText = data.error;
+                }
+            } catch(e) {
+                msg.innerText = 'Ошибка соединения с бэкенд-сервером';
             }
-
-            // Имитация ответа сервера
-            currentUser = {
-                username: username,
-                sub: 'Активна (Version 26.2)',
-                hwid: 'Не привязан'
-            };
-            localStorage.setItem('monolit_user', JSON.stringify(currentUser));
-            updateAuthUI();
-            closeAuthModal();
-            alert(isRegisterMode ? 'Регистрация успешна!'  : 'Успешный вход!');
         }
 
-        function showProfileModal() {
-            const title = document.getElementById('auth-title');
-            const subtitle = document.getElementById('auth-subtitle');
-            const container = document.getElementById('auth-form-container');
-
-            subtitle.textContent = 'ЛИЧНЫЙ КАБИНЕТ';
-            title.textContent = `Привет, ${currentUser.username}!`;
-
-            container.innerHTML = `
-                <div class="p-4 rounded-2xl bg-black/50 border border-white/10 space-y-3 text-left">
-                    <div class="flex justify-between text-xs">
-                        <span class="text-slate-400">Статус подписки:</span>
-                        <span class="text-emerald-400 font-bold">${currentUser.sub}</span>
-                    </div>
-                    <div class="flex justify-between text-xs">
-                        <span class="text-slate-400">Привязка HWID:</span>
-                        <span class="text-purple-400 font-mono-code">${currentUser.hwid}</span>
-                    </div>
-                </div>
-                <button onclick="resetHwid()" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-xs font-semibold text-white transition">
-                    Сбросить HWID
-                </button>
-                <button onclick="logoutUser()" class="w-full py-3 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 text-xs font-semibold text-rose-300 transition">
-                    Выйти из аккаунта
-                </button>
-            `;
-
-            const m = document.getElementById('auth-modal');
-            m.classList.remove('hidden');
-            m.classList.add('flex');
+        function showDashboard(data) {
+            document.getElementById('auth-card').classList.add('hidden');
+            document.getElementById('dashboard-card').classList.remove('hidden');
+            document.getElementById('user-display').innerText = data.username;
+            document.getElementById('sub-display').innerText = new Date(data.sub).toLocaleString();
+            document.getElementById('hwid-display').innerText = data.hwid;
         }
 
-        function resetHwid() {
-            currentUser.hwid = 'Сброшен (ждет лаунчер)';
-            localStorage.setItem('monolit_user', JSON.stringify(currentUser));
-            alert('HWID успешно сброшен!');
-            closeAuthModal();
+        async function resetHwid() {
+            const username = document.getElementById('user-display').innerText;
+            const msg = document.getElementById('dash-msg');
+            msg.innerText = '';
+
+            try {
+                const res = await fetch(`${API_URL}/reset-hwid`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    msg.innerText = 'HWID успешно сброшен!';
+                    document.getElementById('hwid-display').innerText = 'Не привязан';
+                } else {
+                    alert(data.error);
+                }
+            } catch(e) {
+                alert('Ошибка сброса HWID');
+            }
         }
 
-        function logoutUser() {
+        function logout() {
             localStorage.removeItem('monolit_user');
-            currentUser = null;
-            updateAuthUI();
-            closeAuthModal();
-            location.reload();
+            document.getElementById('dashboard-card').classList.add('hidden');
+            document.getElementById('auth-card').classList.remove('hidden');
         }
     </script>
 </body>
