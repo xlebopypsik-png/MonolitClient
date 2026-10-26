@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOLIT — Эстетика превосходства (26.2)</title>
-    <!-- Иконка вкладки (Favicon) с кристаллом -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2L3 7V17L12 22L21 17V7L12 2Z' fill='%23a855f7' stroke='%2338bdf8' stroke-width='1.5'/><path d='M12 2L12 22' stroke='%23ffffff' stroke-width='0.75' opacity='0.6'/></svg>">
+    <!-- Иконка вкладки (Favicon) с буквой M -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='%2306060c' stroke='%23a855f7' stroke-width='1.5'/><text x='50% ' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='900' font-size='14'>M</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,7 @@
             background: linear-gradient(165deg, rgba(18, 18, 32, 0.72) 0%, rgba(7, 7, 14, 0.88) 100%);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             position: relative;
             overflow: hidden;
             transform-style: preserve-3d;
@@ -60,7 +60,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.15), transparent 45%);
+            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.18), transparent 45%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -71,8 +71,9 @@
         }
 
         .glass-card:hover {
-            border-color: rgba(var(--accent-rgb), 0.4);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 35px -10px rgba(var(--accent-rgb), 0.25);
+            border-color: rgba(var(--accent-rgb), 0.6);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.75), 0 0 40px -10px rgba(var(--accent-rgb), 0.4);
+            transform: translateY(-4px);
         }
 
         @keyframes aurora-float {
@@ -113,22 +114,10 @@
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
             <a href="#" class="flex items-center gap-3 group">
+                <!-- Логотип с буквой M -->
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="url(#logo-grad)" stroke="url(#logo-stroke)" stroke-width="1.5"/>
-                            <path d="M12 2L12 22" stroke="#ffffff" stroke-width="0.75" opacity="0.6"/>
-                            <defs>
-                                <linearGradient id="logo-grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--accent-1)" stop-opacity="0.9"/>
-                                    <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.9"/>
-                                </linearGradient>
-                                <linearGradient id="logo-stroke" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#ffffff"/>
-                                    <stop offset="1" stop-color="var(--accent-2)"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                        <span class="font-black text-base text-white theme-text">M</span>
                     </div>
                 </div>
                 <div>
@@ -262,7 +251,7 @@
             </div>
         </section>
 
-        <!-- ТАРИФЫ -->
+        <!-- ТАРИФЫ (ВСЕ С ПОДСВЕТКОЙ) -->
         <section id="pricing" class="py-16 text-left">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div>
@@ -278,7 +267,8 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
+                <!-- Тариф 1 с подсветкой -->
+                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
                     <div>
                         <span class="text-xs font-semibold text-slate-400 uppercase">Старт</span>
                         <h3 class="text-xl font-bold text-white mt-1">30 Дней</h3>
@@ -289,11 +279,12 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Автоматические обновления</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
+                    <button onclick="openModal('30 Дней', 390)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                         Выбрать тариф
                     </button>
                 </div>
 
+                <!-- Тариф 2 с подсветкой -->
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between border-purple-500/40 theme-glow relative">
                     <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold theme-bg text-white">
                         ПОПУЛЯРНЫЙ
@@ -309,12 +300,13 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Приоритетная поддержка 24/7</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white shadow-xl hover:opacity-95 transition">
+                    <button onclick="openModal('90 Дней', 790)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                         Оформить с выгодой
                     </button>
                 </div>
 
-                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
+                <!-- Тариф 3 с подсветкой -->
+                <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between theme-glow border-purple-500/40">
                     <div>
                         <span class="text-xs font-semibold text-sky-400 uppercase">Максимум</span>
                         <h3 class="text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
@@ -326,7 +318,7 @@
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> VIP-роль в сообществе</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-xs text-white transition">
+                    <button onclick="openModal('Навсегда (Lifetime)', 1490)" class="mt-8 w-full py-3.5 rounded-xl theme-bg font-bold text-xs text-white theme-glow hover:opacity-95 transition">
                         Купить навсегда
                     </button>
                 </div>
