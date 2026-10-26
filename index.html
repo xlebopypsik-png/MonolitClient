@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONOLIT — Эстетика превосходства (1.16.5 Fabric)</title>
+    <title>MONOLIT — Эстетика превосходства (26.2)</title>
     <!-- Иконка вкладки (Favicon) с буквой M -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='%2306060c' stroke='%23a855f7' stroke-width='1.5'/><text x='50% ' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='900' font-size='14'>M</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent-1: #a855f7;
@@ -29,10 +29,6 @@
             color: #f8fafc;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-        }
-
-        .font-mono-code {
-            font-family: 'JetBrains Mono', monospace;
         }
 
         .theme-text {
@@ -117,7 +113,6 @@
     <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
         <nav class="w-full max-w-6xl rounded-2xl bg-[#080812]/80 backdrop-blur-2xl border border-white/10 px-5 py-3 flex items-center justify-between shadow-2xl">
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Новый простой и красивый логотип с буквой M -->
                 <div class="w-10 h-10 rounded-xl theme-bg p-[1.5px] theme-glow transition-transform duration-300 group-hover:scale-105">
                     <div class="w-full h-full bg-[#06060c] rounded-[10px] flex items-center justify-center">
                         <span class="font-extrabold text-base text-white theme-text">M</span>
@@ -125,7 +120,7 @@
                 </div>
                 <div>
                     <span class="font-black tracking-wider text-sm sm:text-base text-white block leading-none">MONOLIT</span>
-                    <span class="font-mono-code text-[10px] text-slate-400 tracking-widest">FABRIC 1.16.5</span>
+                    <span class="text-[10px] text-slate-400 tracking-widest font-semibold">VERSION 26.2</span>
                 </div>
             </a>
 
@@ -144,7 +139,7 @@
     <!-- ПАРЯЩИЙ ДОК СТИЛЯ ВНИЗУ -->
     <div class="fixed bottom-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
         <div class="pointer-events-auto flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 rounded-2xl bg-[#0a0a16]/90 backdrop-blur-2xl border border-white/15 shadow-2xl">
-            <span class="text-[11px] font-mono-code text-slate-400 hidden sm:inline">Палитра:</span>
+            <span class="text-[11px] text-slate-400 hidden sm:inline font-medium">Палитра:</span>
             <button onclick="setTheme('#a855f7', '#38bdf8')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-sky-400 ring-2 ring-white/30 hover:scale-110 transition" title="Кибер Нова"></button>
             <button onclick="setTheme('#f43f5e', '#fb923c')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-rose-500 to-orange-400 ring-1 ring-white/20 hover:scale-110 transition" title="Алый Закат"></button>
             <button onclick="setTheme('#10b981', '#06b6d4')" class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 ring-1 ring-white/20 hover:scale-110 transition" title="Изумруд"></button>
@@ -165,7 +160,7 @@
         <section class="space-y-8 min-h-[65vh] flex flex-col items-center justify-center">
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="font-mono-code text-[11px] uppercase tracking-wider text-slate-200">MONOLIT CORE • FABRIC 1.16.5</span>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-200">MONOLIT CORE • VERSION 26.2</span>
             </div>
 
             <h1 class="text-4xl sm:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl">
@@ -173,7 +168,7 @@
             </h1>
 
             <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                Современный клиент для Minecraft 1.16.5 с упором на чистую визуальную эстетику, плавную кинематику движений и абсолютную безопасность конфиденциальности.
+                Современный клиент с упором на чистую визуальную эстетику, плавную кинематику движений и абсолютную безопасность конфиденциальности.
             </p>
 
             <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
@@ -187,8 +182,8 @@
 
             <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg w-full mx-auto">
                 <div class="glass-card rounded-2xl p-4 text-center">
-                    <div class="text-lg font-black text-white">Fabric 1.16.5</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Платформа</div>
+                    <div class="text-lg font-black text-white">Version 26.2</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Релиз сборки</div>
                 </div>
                 <div class="glass-card rounded-2xl p-4 text-center">
                     <div class="text-lg font-black theme-text">OpenGL</div>
@@ -208,14 +203,14 @@
                 <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
                 <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
                 <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ПОДДЕРЖКА FABRIC 1.16.5</span>
+                <span>✦ ВЕРСИЯ СБОРКИ 26.2</span>
                 <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
                 <!-- Дубль -->
                 <span>✦ ЭТАЛОННАЯ ТОЧНОСТЬ И КИНЕМАТИКА</span>
                 <span>✦ КАСТОМНЫЕ BLOOM & GLOW ШЕЙДЕРЫ</span>
                 <span>✦ СТЕЛС-ЗАЩИТА И БЕЗОПАСНОСТЬ</span>
                 <span>✦ МГНОВЕННАЯ СИНХРОНИЗАЦИЯ ПАКЕТОВ</span>
-                <span>✦ ПОДДЕРЖКА FABRIC 1.16.5</span>
+                <span>✦ ВЕРСИЯ СБОРКИ 26.2</span>
                 <span>✦ КОМФОРТ И СТИЛЬ В КАЖДОЙ ДЕТАЛИ</span>
             </div>
         </div>
@@ -223,7 +218,7 @@
         <!-- КАРТОЧКИ ВОЗМОЖНОСТЕЙ -->
         <section id="features" class="py-16 text-left">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-sky-400">ПРЕИМУЩЕСТВА</span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-sky-400">ПРЕИМУЩЕСТВА</span>
                 <h2 class="text-2xl sm:text-4xl font-black mt-2">Создан для максимального комфорта</h2>
             </div>
 
@@ -258,25 +253,25 @@
         <section id="pricing" class="py-16 text-left">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div>
-                    <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ЛИЦЕНЗИЯ</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-purple-400">ЛИЦЕНЗИЯ</span>
                     <h2 class="text-2xl sm:text-4xl font-black mt-2">Тарифные планы</h2>
                 </div>
 
                 <div class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1 self-start">
-                    <button onclick="setCurrency('RUB')" id="cur-RUB" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-mono-code font-bold theme-bg text-white">RUB ₽</button>
-                    <button onclick="setCurrency('USD')" id="cur-USD" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-mono-code text-slate-400 hover:text-white">USD $</button>
-                    <button onclick="setCurrency('EUR')" id="cur-EUR" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-mono-code text-slate-400 hover:text-white">EUR €</button>
+                    <button onclick="setCurrency('RUB')" id="cur-RUB" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white">RUB ₽</button>
+                    <button onclick="setCurrency('USD')" id="cur-USD" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">USD $</button>
+                    <button onclick="setCurrency('EUR')" id="cur-EUR" class="cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white">EUR €</button>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-mono-code text-slate-400 uppercase">Старт</span>
+                        <span class="text-xs font-semibold text-slate-400 uppercase">Старт</span>
                         <h3 class="text-xl font-bold text-white mt-1">30 Дней</h3>
                         <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="390">390 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ к версии 1.16.5</li>
+                            <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Полный доступ к версии 26.2</li>
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Все визуальные шейдеры и эффекты</li>
                             <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Автоматические обновления</li>
                         </ul>
@@ -287,11 +282,11 @@
                 </div>
 
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between border-purple-500/40 theme-glow relative">
-                    <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono-code font-bold theme-bg text-white">
+                    <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold theme-bg text-white">
                         ПОПУЛЯРНЫЙ
                     </div>
                     <div>
-                        <span class="text-xs font-mono-code text-purple-300 uppercase">Оптимальный</span>
+                        <span class="text-xs font-semibold text-purple-300 uppercase">Оптимальный</span>
                         <h3 class="text-xl font-bold text-white mt-1">90 Дней</h3>
                         <div class="text-3xl font-black theme-text mt-4 mb-6" data-price-rub="790">790 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-200">
@@ -308,7 +303,7 @@
 
                 <div class="glass-card tilt-card rounded-3xl p-7 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-mono-code text-sky-400 uppercase">Максимум</span>
+                        <span class="text-xs font-semibold text-sky-400 uppercase">Максимум</span>
                         <h3 class="text-xl font-bold text-white mt-1">Навсегда (Lifetime)</h3>
                         <div class="text-3xl font-black text-white mt-4 mb-6" data-price-rub="1490">1 490 ₽</div>
                         <ul class="space-y-3 text-xs text-slate-300">
@@ -328,7 +323,7 @@
         <!-- FAQ -->
         <section id="faq" class="py-12 max-w-3xl mx-auto text-left">
             <div class="text-center mb-10">
-                <span class="font-mono-code text-xs uppercase tracking-widest text-purple-400">ПОМОЩЬ</span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-purple-400">ПОМОЩЬ</span>
                 <h2 class="text-2xl sm:text-3xl font-black mt-2">Часто задаваемые вопросы</h2>
             </div>
 
@@ -345,11 +340,11 @@
 
                 <div class="glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(1)">
                     <div class="flex items-center justify-between">
-                        <h4 class="text-sm font-bold text-white">Как установить клиент на версию 1.16.5?</h4>
+                        <h4 class="text-sm font-bold text-white">Как установить клиент версии 26.2?</h4>
                         <span id="faq-icon-1" class="text-purple-400 font-bold text-lg">+</span>
                     </div>
                     <p id="faq-body-1" class="text-xs text-slate-400 mt-3 leading-relaxed hidden">
-                        Клиент устанавливается через стандартный загрузчик Fabric для Minecraft 1.16.5 в один клик по нашей подробной инструкции.
+                        Клиент устанавливается в один клик по нашей подробной инструкции для текущей сборки.
                     </p>
                 </div>
             </div>
@@ -365,7 +360,7 @@
                 <span class="font-bold text-slate-300">MONOLIT</span>
                 <span>© 2026 Все права защищены.</span>
             </div>
-            <p>Не является официальным продуктом Minecraft. Не одобрено Mojang или Microsoft.</p>
+            <p>Не является официальным продуктом. Все права на интеллектуальную собственность принадлежат их владельцам.</p>
         </div>
     </footer>
 
@@ -374,7 +369,7 @@
         <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15">
             <div class="flex items-center justify-between mb-6">
                 <div>
-                    <span class="font-mono-code text-[11px] text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
+                    <span class="text-[11px] font-semibold text-purple-400 uppercase">МОМЕНТАЛЬНАЯ ВЫДАЧА</span>
                     <h3 id="modal-title" class="text-xl font-bold text-white mt-0.5">Тариф</h3>
                 </div>
                 <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">✕</button>
@@ -387,9 +382,9 @@
                 </div>
 
                 <div>
-                    <label class="text-xs text-slate-400 block mb-1.5">Промокод (пробуйте <span class="text-purple-400 font-mono-code">MONOLIT20</span>)</label>
+                    <label class="text-xs text-slate-400 block mb-1.5">Промокод (пробуйте <span class="text-purple-400 font-semibold">MONOLIT20</span>)</label>
                     <div class="flex gap-2">
-                        <input type="text" id="promo-code" placeholder="MONOLIT20" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-sm text-white uppercase font-mono-code focus:outline-none">
+                        <input type="text" id="promo-code" placeholder="MONOLIT20" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-sm text-white uppercase font-semibold focus:outline-none">
                         <button onclick="checkPromo()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white">ОК</button>
                     </div>
                     <p id="promo-msg" class="text-[11px] mt-1.5 hidden"></p>
@@ -552,9 +547,9 @@
         function setCurrency(cur) {
             currency = cur;
             document.querySelectorAll('.cur-btn').forEach(b => {
-                b.className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-mono-code text-slate-400 hover:text-white';
+                b.className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white';
             });
-            document.getElementById(`cur-${cur}`).className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-mono-code font-bold theme-bg text-white';
+            document.getElementById(`cur-${cur}`).className = 'cur-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold theme-bg text-white';
 
             document.querySelectorAll('[data-price-rub]').forEach(el => {
                 const rub = Number(el.getAttribute('data-price-rub'));
